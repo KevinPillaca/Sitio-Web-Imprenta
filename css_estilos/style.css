@@ -325,11 +325,15 @@ body {
 .icon-container img {
   height: 80px;
   filter: grayscale(100%);
-  transition: filter 0.3s ease, brightness 0.3s ease;
+  transition: 
+    filter 0.3s ease, 
+    brightness 0.3s ease, 
+    transform 0.3s cubic-bezier(0.25, 1.25, 0.5, 1.05); /* efecto rebote */
 }
 
 .icon-container img:hover {
   filter: grayscale(0%) brightness(0.8);
+  transform: scale(1.15);
 }
 
 /* este es el style de la parte de bienvenidos*/
@@ -341,7 +345,7 @@ body {
   position: relative;
   background: white;
   gap: 100px;
-  height: 500px; /* Puede ajustar la altura según sea necesario */
+  height: 550px; /* Puede ajustar la altura según sea necesario */
 }
 
 .decoracion-puntos {
@@ -403,4 +407,75 @@ body {
   border-radius: 8px;
   object-fit: cover;
   display: block; /* Para evitar espacio extra debajo de la imagen */
+}
+
+/* este es el style de la seccion haz crecer tu negocio */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+}
+
+.banner img.fondo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cubre toda el área sin deformar */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 4, 217, 0.452); /* Color rosado semi-transparente */
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  color: white;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.subtitulo {
+  font-size: 24px;
+  color: #00ffe5; /* Celeste vibrante */
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.button_slide {
+  background-color: #00aaff;
+  color: #FFF;
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #2932b2;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #024c9b;
 }
