@@ -165,7 +165,7 @@ body {
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease;
-}
+ }
 
 .slide.activo .contenido {
   opacity: 1;
@@ -186,50 +186,43 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.3s;
+  margin-top: 80px;
 }
 
 .slide.activo .contenido h2 {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.5s;
+  margin-top: 5px;
 }
 
 .slide.activo .contenido p {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.7s;
+  margin-top: 5px;
 }
 
 /* === Botón: transiciones separadas === */
 
-.boton {
+.button_Portal {
+  background-color: #00aaff;
+  color: #FFF;
+  border-radius: 0px;
+  padding: 18px 36px;
   display: inline-block;
-  padding: 12px 25px;
-  background: #007bff;
-  color: white;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  position: relative;
-  z-index: 10;
-  margin-top: 25px;
-
-  /* Aparición inicial del botón */
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #2932b2;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  margin-top: 30px;
 }
-
-.slide.activo .contenido .boton {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.9s, 0.9s;
-}
-
-/* Hover del botón con transición solo para background */
-.boton:hover {
-  background: #024c9b;
-  transition: background 0.3s ease;
+.button_Portal:hover {
+  box-shadow: inset 0 0 0 50px #024c9b;
 }
 
 /* === Diseño de textos === */
@@ -345,7 +338,7 @@ body {
   position: relative;
   background: white;
   gap: 100px;
-  height: 550px; /* Puede ajustar la altura según sea necesario */
+  height: 550px;
 }
 
 .decoracion-puntos {
@@ -355,14 +348,14 @@ body {
 .decoracion-puntos.izquierda {
   top: 50px;
   left: 20px;
-  width: 450px; /* Ajuste el ancho según sea necesario */
+  width: 450px;
   z-index: 0;
 }
 
 .decoracion-puntos.derecha {
   bottom: 50px;
   right: 20px;
-  width: 450px; /* Ajuste el ancho según sea necesario */
+  width: 450px;
   z-index: 0;
 }
 
@@ -373,8 +366,8 @@ body {
 
 .contenido-bienvenido {
   max-width: 500px;
-  text-align: left; /* Alineación del texto a la izquierda */
-  z-index: 1; /* Asegura que el contenido esté por encima de los puntos */
+  text-align: left;
+  z-index: 1;
 }
 
 .contenido-bienvenido h4 span {
@@ -388,17 +381,20 @@ body {
   font-weight: 900;
   line-height: 1.2;
   margin: 15px 0;
+  margin-top: 50px;
 }
 
 .contenido-bienvenido p {
   font-size: 16px;
   color: #333;
   line-height: 1.6;
+  margin-top: 50px;
 }
 
 .imagen {
-  flex-shrink: 0; /* Evita que la imagen se encoja demasiado */
-  z-index: 1; /* Asegura que la imagen esté por encima de los puntos */
+  position: relative;
+  flex-shrink: 0;
+  z-index: 1;
 }
 
 .imagen img {
@@ -406,8 +402,42 @@ body {
   max-width: 500px;
   border-radius: 8px;
   object-fit: cover;
-  display: block; /* Para evitar espacio extra debajo de la imagen */
+  display: block;
 }
+
+/* Efecto borde animado */
+.imagen::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border: 2px solid #0f89ed;
+  border-radius: 10px;
+  pointer-events: none;
+  animation: bordeAnimado 3s linear infinite;
+  z-index: 2;
+}
+
+@keyframes bordeAnimado {
+  0% {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  50% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
+  }
+  75% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
 
 /* este es el style de la seccion haz crecer tu negocio */
 .banner {
@@ -459,6 +489,7 @@ body {
   line-height: 1.3;
   margin-bottom: 30px;
   text-transform: uppercase;
+  margin-top: 60px;
 }
 
 .button_slide {
@@ -475,6 +506,7 @@ body {
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
+  margin-top: 40px;
 }
 .slide_left:hover {
   box-shadow: inset 0 0 0 50px #024c9b;
