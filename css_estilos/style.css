@@ -1,9 +1,40 @@
-/* Este es el style de la cabecera de info de contactos y redes sociales*/
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+body {
   font-family: Arial, sans-serif;
+  cursor: none;
 }
 
+/* este es el estilo del Efecto del cursor*/
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(243, 99, 9);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 255, 255, 0.2); /* Fondo color con opacidad */
+    border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Este es el style de la cabecera de info de contactos y redes sociales*/
 .top-header {
   background-color: #00aaff;
   color: white;
@@ -25,7 +56,8 @@ body {
   color: white;
 }
 
-.contact-info img, .social-icons img {
+.contact-info img,
+.social-icons img {
   display: block;
 }
 
@@ -51,7 +83,8 @@ body {
 }
 
 .icon-white:hover {
-  filter: invert(69%) sepia(25%) saturate(1885%) hue-rotate(139deg) brightness(103%) contrast(102%);
+  filter: invert(69%) sepia(25%) saturate(1885%) hue-rotate(139deg)
+    brightness(103%) contrast(102%);
 }
 
 .social-icons {
@@ -60,68 +93,180 @@ body {
   gap: 15px;
 }
 
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .top-header {
+    flex-direction: column;
+    padding: 15px 20px;
+    align-items: center; /* Centra los hijos (.contact-info, .social-icons) */
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 15px; /* Espacio entre email y teléfono */
+    align-items: center; /* Centra el email y el teléfono */
+    width: 100%;
+  }
+
+  .contact-info span {
+    justify-content: center; /* Centra el contenido (icono + texto) dentro de cada span */
+  }
+
+  .social-icons {
+    margin-top: 15px; /* Espacio entre teléfono y íconos sociales */
+    justify-content: center; /* Centra los íconos sociales */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon,
+  .icon_w {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+  }
+
+  .contact-info span {
+    font-size: 0.9em;
+  }
+}
+
 /* Este es el style de la cabecera de navegacion de la pagina*/
+.header_navegador {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffffec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 100px;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 2px 8px rgba(75, 255, 255, 0.262);
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #595959;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #ff4321;
+}
+
+.contacto {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.telefono-icono {
+  width: 60px;
+  height: 60px;
+  background: #ff4321;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.telefono-icono img {
+  width: 50px;
+  height: 50px;
+}
+
+.telefono-texto span {
+  display: block;
+  color: #6e7b8a;
+  font-size: 16px;
+}
+
+.telefono-texto strong {
+  color: #0a1e3f;
+  font-size: 25px;
+}
+
+/* Botón hamburguesa (oculto en pantallas grandes) */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #595959;
+  cursor: pointer;
+}
+
+/* ---------------------- */
+/* Estilos responsive     */
+/* ---------------------- */
+
+@media (max-width: 768px) {
   .header_navegador {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 25px 100px;
-    background: white;
-}
-
-  .logo img {
-    height: 50px;
-}
-
-  .nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-  .nav ul li a {
-    text-decoration: none;
-    color: #0a1e3f;
-    font-weight: 600;
-    font-size: 16px;
-    transition: color 0.3s ease;
-}
-
-  .nav ul li a:hover {
-    color: #ff4321;
-}
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    height: auto;
+  }
 
   .contacto {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
+    display: none;
+  }
 
-  .telefono-icono {
-    width: 60px;
-    height: 60px;
-    background: #ff4321;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-}
-
-  .telefono-icono img {
-    width: 50px;
-    height: 50px;
-}
-
-  .telefono-texto span {
+  .menu-toggle {
     display: block;
-    color: #6e7b8a;
-    font-size: 16px;
+  }
+
+  .nav {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1.2s ease-in-out;
+  }
+
+  .nav.show {
+    max-height: 500px; /* Ajusta si tu menú tiene más enlaces */
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin: 0;
+  }
+
+  .nav.show {
+    display: block;
+  }
+  .logo img {
+  height: 38px;
+}
 }
 
-  .telefono-texto strong {
-    color: #0a1e3f;
-    font-size: 25px;
+/* (para la pagina actual) */
+.nav ul li a.activo {
+  color: #ff4321;
+  border-bottom: 2px solid #ff4321;
+  padding-bottom: 5px;
 }
 
 
@@ -129,7 +274,7 @@ body {
 .carrusel {
   position: relative;
   width: 100%;
-  height: 620px;
+  height: 630px;
   overflow: hidden;
 }
 
@@ -155,7 +300,7 @@ body {
 }
 
 .contenido {
-  background: rgba(255, 0, 230, 0.4);
+  background: hwb(306 0% 0% / 0.4);
   width: 100%;
   height: 100%;
   text-align: center;
@@ -305,7 +450,7 @@ body {
   display: flex;
   gap: 170px;
   padding: 20px;
-  background-color: #f8f8f8;
+  background-color: #e5e5e5c2;
   justify-content: center;
   align-items: center;
   height: 130px;
@@ -393,33 +538,50 @@ body {
 
 .imagen {
   position: relative;
-  flex-shrink: 0;
+  display: inline-block;
   z-index: 1;
+  --angle: 0deg; /* valor inicial de rotación */
 }
 
 .imagen img {
   width: 100%;
   max-width: 500px;
-  border-radius: 8px;
-  object-fit: cover;
+  border-radius: 10px;
   display: block;
 }
 
-/* Efecto borde animado */
+/* Borde animado controlado por JS */
 .imagen::after {
   content: "";
   position: absolute;
-  top: -8px;
-  left: -8px;
-  width: calc(100% + 16px);
-  height: calc(100% + 16px);
-  border: 2px solid #0f89ed;
-  border-radius: 10px;
+  top: -4px;
+  left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: linear-gradient(0deg, #0f89ed, #0f89ed) border-box;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
   pointer-events: none;
-  animation: bordeAnimado 3s linear infinite;
   z-index: 2;
+  transform: rotate(var(--angle));
+  transform-origin: center;
+  transition: transform 0.01s linear;
 }
 
+/* Animación que hace girar la línea */
+@keyframes bordeFluido {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes bordeAnimado {
   0% {
     clip-path: polygon(0 0, 0 0, 0 0, 0 0);
@@ -510,4 +672,435 @@ body {
 }
 .slide_left:hover {
   box-shadow: inset 0 0 0 50px #024c9b;
+}
+
+/* seccion impresion digital, offset y diseño */
+.cuadrados {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  padding: 2rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.cuadrado_principal {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cuadrado_principal:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.cuadro_imagen img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.cuadrado_principal h1 {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: #ff03b8;
+  font-weight: bold;
+}
+
+.cuadrado_principal p {
+  font-size: 1.2rem;
+  margin: 1rem 0 0.5rem;
+  color: #858585;
+  font-size: 16px;
+} 
+
+.cuadrado_principal a {
+  text-decoration: underline;
+  text-decoration-color: transparent; /* oculto por defecto */
+  text-decoration-thickness: 1px; /* Establece el grosor de la línea a 1 píxel */
+  text-underline-offset: 4px; /* Separa la línea 3 píxeles del texto */
+  color: #05dac4;
+  transition: text-decoration-color 0.3s ease;
+  }
+
+.cuadrado_principal a:hover {
+  text-decoration-color: #fe07c5; /* cambia la raya al pasar el cursor */
+}
+
+
+/* stylo de ofrecemos una amplia gama de cervicios*/
+.container_servicios {
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  height: 650px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  }
+
+.imageenes_servicios {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap; /* Permite que pasen a otra línea si no hay espacio */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  background-color: #673AB7;
+  padding: 20px;
+  gap: 20px; /* Espacio entre imágenes */
+}
+
+.imageenes_servicios img {
+  width: 45%;
+  height: auto;
+  object-fit: contain;
+}
+
+.info_servicios {
+  flex: 1;
+  background-color: #673AB7;
+  color: #fff;
+  padding: 40px;
+  display: flex; /* Ya lo tienes, lo mantenemos */
+  flex-direction: column; /* Aseguramos que los elementos internos se apilen verticalmente */
+  justify-content: center; /* Esto centrará verticalmente el contenido */
+}
+
+.info_servicios h1 {
+  color: rgb(234, 170, 7);
+  font-size: 1.5em;
+  padding-top: 10px;
+}
+
+.info_servicios h2 {
+  font-size: 3.8em;
+  margin-top: 0%;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.info_servicios p {
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.info_servicios ul {
+  list-style: none;
+  padding-bottom: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px;
+  align-items: start; /* Añadimos esta propiedad para alinear los items al inicio */
+}
+
+.info_servicios ul li {
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 25px;
+  display: flex;
+  align-items: center;
+}
+
+.info_servicios ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #A5D6A7;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.info_servicios ul li span {
+  flex: 1;
+  padding-left: 5px;
+}
+
+/* style de Guia de pedidos */
+
+.container_pedido {
+  background-color: #dadada86;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 60px ;
+}
+.container_pedido h1 {
+  font-size: 32px;
+  color: #00aaff;
+  text-align: center;
+}
+.guia {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.diseño,
+.revision_confirmacion,
+.pago,
+.entrega_envio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.diseño img,
+.revision_confirmacion img,
+.pago img,
+.entrega_envio img {
+  width: 100px;
+  height: 100px;
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+.diseño h2,
+.revision_confirmacion h2,
+.pago h2,
+.entrega_envio h2 {
+  color: #00aaff;
+  font-size: 17px;
+  margin-top: 5px;
+}
+.diseño p,
+.revision_confirmacion p,
+.pago p,
+.entrega_envio p {
+  color: rgb(98, 98, 98);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 1px;
+}
+
+/* seccion de contacto */
+.contenedor_info {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  height: 600px; 
+  display: flex;              
+  justify-content: center;   
+  align-items: center;       
+}
+
+.contenedor_contacto_cotizacion {
+  width: 600px;
+  height: 400px;
+  display: flex;
+}
+.contacto_info {
+    background: linear-gradient(135deg, #0abde3, #09ffff);
+    color: #fff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 1000px;
+}
+
+.contacto_info h2 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.contacto_item {
+    display: flex;
+    align-items: center;
+    
+    margin-bottom: 20px;
+}
+
+.contacto_item img {
+    width: 50px;
+    height: 55px;
+    margin-right: 8px;
+    fill: #fff;
+}
+
+.datos_contacto h2 {
+  margin: 0;
+  font-size: 13px;
+  color: #000000;
+}
+.datos_contacto p {
+    margin: 0;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.form_cotizacion {
+    background-color: #e8e8e8; /* Fondo gris claro para el formulario */
+    padding: 30px;
+    width: 1000px;
+}
+
+.form_cotizacion h2 {
+    font-size: 40px;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: left; /* Alinea el título a la izquierda como en la captura */
+}
+
+
+.form_datos {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form_grupo {
+    flex: 1;
+    margin-bottom: 8px;
+}
+
+.form_grupo input[type="text"],
+.form_grupo input[type="email"],
+.form_grupo textarea {
+    width: 200px;
+    padding: 10px; /* Aumenté el padding interno */
+    border: none; /* Borde gris claro */
+    font-size: 14px;
+    color: #bababa;
+    box-sizing: border-box;
+}
+.form_grupo input::placeholder,
+.form_grupo textarea::placeholder {
+    color: #c6c6c6;
+    font-size: 14px;
+}
+.form_grupo input[type="text"]:focus,
+.form_grupo input[type="email"]:focus,
+.form_grupo textarea:focus {
+    outline: none; /* Quita el contorno por defecto */
+    border: 2px solid #0abde3; /* Solo cambia el color del borde al enfocar */
+}
+
+.form_grupo textarea {
+    min-height: 80px; /* Restauré una altura un poco mayor */
+    width: 410px;
+}
+
+.button_info {
+  background-color: rgb(18, 18, 18);
+  color: white;
+  border-radius: 20px;
+  padding: 15px 30px;
+  display: inline-block;
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #D80286;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  border: none;
+}
+.slide_diagonal:hover {
+  box-shadow: inset 400px 50px 0 0 #D80286;
+}
+
+
+/* seccion de footer */
+footer {
+  width: 100%;
+  padding: 10px 10px;
+  background-size: cover;
+  background-color: #00aaff;
+  height: auto; /* El footer se ajustará a la altura de su contenido */
+}
+
+.container__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.box__footer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.box__footer .logo img {
+  width: 180px;
+}
+
+.box__footer .terms {
+  max-width: 350px;
+  margin-top: 20px;
+  font-weight: 540;
+  color: #09ffff;
+  font-size: 18px;
+}
+
+.box__footer h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.box__footer a {
+  margin-top: 10px;
+  color: #09ffff;
+  font-weight: 550;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out; /* transición suave */
+  display: inline-block; /* necesario para que transform funcione correctamente */
+}
+
+.box__footer a:hover {
+  transform: scale(1.08); /* efecto de agrandado */
+  opacity: 0.8;
+  color: #eeeeee;
+} 
+
+.box__footer a img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+
+.box__footer a .fab {
+  font-size: 20px;
+}
+
+.box__copyright {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.box__copyright p {
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.box__copyright hr {
+  margin-top: 10px;
+  border: none;
+  height: 1px;
+  background-color: #ffffff;
 }

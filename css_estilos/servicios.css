@@ -1,0 +1,518 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  font-family: Arial, sans-serif;
+  cursor: none;
+}
+
+/* este es el estilo del Efecto del cursor*/
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(243, 99, 9);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursor-outline {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 255, 255, 0.2); /* Fondo color con opacidad */
+    border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+}
+
+/* Este es el style de la cabecera de navegacion de la pagina*/
+.header_navegador {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #ffffffec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 100px;
+  width: 100%;
+  height: 100px;
+  box-shadow: 0 2px 8px rgba(75, 255, 255, 0.262);
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 50px;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  color: #595959;
+  font-weight: 600;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav ul li a:hover {
+  color: #ff4321;
+}
+
+.contacto {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.telefono-icono {
+  width: 60px;
+  height: 60px;
+  background: #ff4321;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.telefono-icono img {
+  width: 50px;
+  height: 50px;
+}
+
+.telefono-texto span {
+  display: block;
+  color: #6e7b8a;
+  font-size: 16px;
+}
+
+.telefono-texto strong {
+  color: #0a1e3f;
+  font-size: 25px;
+}
+
+/* Botón hamburguesa (oculto en pantallas grandes) */
+.menu-toggle {
+  display: none;
+  font-size: 30px;
+  background: none;
+  border: none;
+  color: #595959;
+  cursor: pointer;
+}
+
+/* ---------------------- */
+/* Estilos responsive     */
+/* ---------------------- */
+
+@media (max-width: 768px) {
+  .header_navegador {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    height: auto;
+  }
+
+  .contacto {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    width: 100%;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1.2s ease-in-out;
+  }
+
+  .nav.show {
+    max-height: 500px; /* Ajusta si tu menú tiene más enlaces */
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    margin: 0;
+  }
+
+  .nav.show {
+    display: block;
+  }
+  .logo img {
+  height: 38px;
+}
+}
+
+/* (para la pagina actual) */
+.nav ul li a.activo {
+  color: #ff4321;
+  border-bottom: 2px solid #ff4321;
+  padding-bottom: 5px;
+}
+
+
+/* style de nuestros servicios */
+.servicios-banner {
+  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  color: rgba(255, 255, 255, 0.844);
+  text-align: center;
+  overflow: hidden; /* Asegura que el pseudo-elemento no se salga */
+}
+
+.servicios-banner img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.servicios-banner::before {
+  content: ""; /* Necesario para que el pseudo-elemento se renderice */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ff03b87a; /* Un morado semitransparente (ajusta el color y la opacidad) */
+  /* Otra opción sería usar un degradado semitransparente:
+  background-image: linear-gradient(rgba(103, 58, 183, 0.3), rgba(103, 58, 183, 0.7)); */
+}
+
+.servicios-banner h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  margin: 0;
+  padding: 10px 20px;
+  z-index: 1; /* Asegura que el texto esté por encima de la capa semitransparente */
+}
+
+.servicios-banner h1::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin: 10px auto 0 auto;
+  background-color: white;
+  border-radius: 2px;
+  animation: expandLine 1s ease-out forwards;
+}
+
+@keyframes expandLine {
+  to {
+    width: 350px;
+  }
+}
+@media (max-width: 768px) {
+  @keyframes expandLine {
+    to {
+      width: 170px;
+    }
+  }
+}
+
+/* esta parte es el style de la card de los servicios */
+.container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.card {
+  width: 300px;
+  height: auto;
+  background-color: #ffffff;
+  margin: 50px 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 30px;
+  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* Desenfoque mayor y ligera extensión */
+  transition: box-shadow 0.3s ease; /* Transición suave para cuando interactúes */
+  border: 1px solid #15b0fe;
+}
+.card:hover {
+  box-shadow: 0px 10px 25px rgba(137, 137, 137, 0.495); /* Sombra más pronunciada al pasar el ratón */
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card a {
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.card .button_arriba {
+  background-color: #ff03b8;
+  color: white;
+  height: 40px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  margin-top: 40px; /* Espacio debajo del botón arriba */
+}
+.card .button_arriba:hover {
+  box-shadow: inset 400px 50px 0 0 #f946c6;
+}
+
+.card .button_abajo {
+  background-color: #15b0fe;
+  height: 40px;
+  width: 130px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  margin-bottom: 40px;
+  color: white;
+}
+.card .button_abajo:hover {
+  box-shadow: inset 400px 50px 0 0 #5ac4f9;
+}
+
+.description_card {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left:20px;
+  margin-right: 20px;
+  font-size: 15px;
+  color: rgb(107, 107, 107);
+}
+
+.card h1 {
+  background-color:#15b0fe ;
+  color: #ffffff;
+  margin: 0%;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.card_magenta {
+  border: 1px solid #ff03b8;
+}
+.card .producto_magenta {
+  background-color: #ff03b8;
+   border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.card_magenta.button_magenta {
+  background-color: #ff03b8 ;
+}
+.card .button_arriba img {
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  padding: 1px;
+}
+.card .button_abajo img {
+  width:20px;
+  height: 20px;
+  margin-right: 10px;
+  padding: 1px;
+}
+
+/* style de Guia de pedidos */
+
+.container_pedido {
+  background-color: #dadada86;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 60px ;
+}
+.container_pedido h1 {
+  font-size: 32px;
+  color: #00aaff;
+  text-align: center;
+}
+.guia {
+  display: flex;
+  width: auto;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.diseño,
+.revision_confirmacion,
+.pago,
+.entrega_envio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.diseño img,
+.revision_confirmacion img,
+.pago img,
+.entrega_envio img {
+  width: 100px;
+  height: 100px;
+  margin-top: 45px;
+  margin-bottom: 30px;
+}
+.diseño h2,
+.revision_confirmacion h2,
+.pago h2,
+.entrega_envio h2 {
+  color: #00aaff;
+  font-size: 17px;
+  margin-top: 5px;
+}
+.diseño p,
+.revision_confirmacion p,
+.pago p,
+.entrega_envio p {
+  color: rgb(98, 98, 98);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 1px;
+}
+
+
+
+/* style aviso boleta */
+.aviso-boleta {
+  background-color: #fff3cd;       /* Color de fondo tipo advertencia */
+  color: #856404;                  /* Color de texto marrón (advertencia) */
+  border: 1px solid #ffeeba;       /* Borde suave */
+  padding: 12px 16px;              /* Espaciado interno */
+  border-radius: 6px;              /* Bordes redondeados */
+  font-size: 16px;
+  margin: 20px 0;                  /* Separación superior e inferior */
+  text-align: center;
+}
+
+/* seccion de footer del sitio web */
+footer {
+  width: 100%;
+  padding: 10px 10px;
+  background-size: cover;
+  background-color: #00aaff;
+  height: auto; /* El footer se ajustará a la altura de su contenido */
+}
+
+.container__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.box__footer {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.box__footer .logo img {
+  width: 180px;
+}
+
+.box__footer .terms {
+  max-width: 350px;
+  margin-top: 20px;
+  font-weight: 540;
+  color: #09ffff;
+  font-size: 18px;
+}
+
+.box__footer h2 {
+  margin-bottom: 30px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.box__footer a {
+  margin-top: 10px;
+  color: #09ffff;
+  font-weight: 550;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out; /* transición suave */
+  display: inline-block; /* necesario para que transform funcione correctamente */
+}
+
+.box__footer a:hover {
+  transform: scale(1.08); /* efecto de agrandado */
+  opacity: 0.8;
+  color: #eeeeee;
+} 
+
+.box__footer a img {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+
+.box__footer a .fab {
+  font-size: 20px;
+}
+
+.box__copyright {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.box__copyright p {
+  margin-top: 20px;
+  color: #ffffff;
+}
+
+.box__copyright hr {
+  border: none;
+  height: 1px;
+  background-color: #ffffff;
+}
+
+
