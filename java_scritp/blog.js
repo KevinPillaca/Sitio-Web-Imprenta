@@ -56,12 +56,89 @@ enlaces.forEach((enlace) => {
   }
 });
 
-// animaciones scrolltrigger
+
+// Esperamos que se cargue todo el contenido de la página
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const contenido = document.getElementById("contenido");
+
+  // Aseguramos que se ejecute después de una pequeña pausa (opcional)
+  setTimeout(() => {
+    loader.classList.add("ocultar");
+    contenido.classList.remove("oculto");
+  }, 900); // puedes ajustar el tiempo si deseas
+});
+
+
+// ANIMACIONES CON GSAP
+  // Animacion de inicio para el logo con class (.logo)
+let logo = document.querySelector(".logo") 
+gsap.from(logo,{
+    x: -200,
+   // rotate: 360,
+    scale: 1,
+    delay: 0.900,
+    duration: 3,
+    ease: "bounce.out"
+})
+
+  // Animacion de inicio para el Menu
+gsap.from(".menu-item",{
+  y: -200,
+  ease:"power.out",
+  delay: 0.900,
+  //duration:1,
+  stagger:0.25
+})
+
+  // Animacion de inicio numero de contacto
+let contacto = document.querySelector(".contacto") 
+gsap.from(contacto,{
+    x: 200,
+   // rotate: 360,
+    scale: 1,
+    delay: 0.900,
+    duration: 3,
+    ease: "bounce.out"
+})
+
+// animaciones contacto
 gsap.from(".servicios-banner h1",{
   y: -200,
   ease:"power.out",
+  delay: 0.900,
   duration:1,
   stagger:0.25
 })
 
+// Animacion Gsap con scrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
+    // Animacion la parte de bienvenidos
+const animaciones_blog = [
+  { selector: ".diseño_grafico", efecto: "animate__backInRight" },
+  { selector: ".illustrator", efecto: "animate__fadeInUp" },
+  { selector: ".corel_draw", efecto: "animate__zoomIn" },
+  { selector: ".photoshop", efecto: "animate__fadeInTopLeft" },
+  { selector: ".canva", efecto: "animate__fadeInTopLeft" },
+  { selector: ".pdf", efecto: "animate__slideInRight" },
+  { selector: ".digital", efecto: "animate__zoomInUp" },
+  { selector: ".offset", efecto: "animate__rollIn" }
+];
+
+animaciones_blog.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "3s"); // duración en segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});

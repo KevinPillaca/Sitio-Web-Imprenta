@@ -5,8 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css_estilos/blog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body oncontextmenu="return false;">
+
+<!-- Efecto carga al inciar-->
+<div id="loader">
+    <div class="cmyk-loader">
+      <div class="gota cyan"></div>
+      <div class="gota magenta"></div>
+      <div class="gota yellow"></div>
+      <div class="gota black"></div>
+    </div>
+</div>
+
 <!-- Efecto del cursor-->
 <div class="cursor-dot"></div>
 <div class="cursor-outline"></div>
@@ -23,9 +35,9 @@
     <ul>
       <li class="menu-item"><a href="hogar.html">Hogar</a></li>
       <li class="menu-item"><a href="servicios.html">Servicios</a></li>
-      <li class="menu-item"><a href="#">Acerca de</a></li>
+      <li class="menu-item"><a href="nosotros.html">Nosotros</a></li>
       <li class="menu-item"><a href="blog.html">Blog</a></li>
-      <li class="menu-item"><a href="#">Contacto</a></li>
+      <li class="menu-item"><a href="contacto.html">Contacto</a></li>
     </ul>
   </nav>
 
@@ -49,7 +61,7 @@
 <!-- Esta es la parte de del contenido del blog-->
 
 <div class="blog_derecha">
-    <img src="imagenes/blog/blog_grafico.jpg" alt="imagen blog grafico">
+    <img class="diseño_grafico" src="imagenes/blog/blog_grafico.jpg" alt="imagen blog grafico">
     <div class="contenido_blog_derecha">
         <h1>DISEÑO GRÁFICO</h1>
         <P>
@@ -117,7 +129,7 @@
             
         </div>
         <div class="imagen">
-            <img src="imagenes/blog/illustrator.png" alt="Logo Illustrator">
+            <img class="illustrator" src="imagenes/blog/illustrator.png" alt="Logo Illustrator">
         </div>
     </div>
     <div class="contenido_2">
@@ -132,7 +144,7 @@
 
 <div class="blog_corel">
     <div class="blogImagen">
-        <img src="imagenes/blog/corel_draw.png" alt="">
+        <img class="corel_draw" src="imagenes/blog/corel_draw.png" alt="">
         <div class="blog">
             <h1>CORELDRAW</h1> 
             <h2>¿Qué es CorelDRAW?</h2> 
@@ -180,7 +192,7 @@
             <h2>¿Por qué elegir Photoshop?</h2>
             <p>Ideal para trabajos donde las imágenes y los efectos visuales son protagonistas (afiches, gigantografías, montajes). Permite un control avanzado de color, luz y texturas para lograr impacto visual. Herramienta esencial para cualquier diseñador gráfico que trabaje con fotografía o contenido visual.</p>
         </div>
-        <img src="imagenes/blog/photoshop.png" alt="logo de photoshop">
+        <img class="photoshop" src="imagenes/blog/photoshop.png" alt="logo de photoshop">
     </div>
     <div class="blog_2">
         <h2>Características clave de Photoshop</h2>
@@ -202,7 +214,7 @@
 
 <div class="blog_canva">
     <div class="blogImagen">
-        <img src="imagenes/blog/canva.png" alt="logo de canva">
+        <img class="canva" src="imagenes/blog/canva.png" alt="logo de canva">
         <div class="blog">
             <h1>CANVA</h1>
             <h2>¿Qué es Canva?</h2>
@@ -244,7 +256,7 @@
                 <li>✅ <strong>Permite bloquear edición:</strong> Protege el archivo final de modificaciones accidentales o no autorizadas.</li>
             </ol>
         </div>
-        <img src="imagenes/blog/pdf.png" alt="logo de pdf">
+        <img class="pdf" src="imagenes/blog/pdf.png" alt="logo de pdf">
     </div>
 </div>
 
@@ -253,7 +265,7 @@
 <!-- Esta es la parte de del contenido del blog impresion digital-->
 
 <div class="blog_digital">
-    <img src="imagenes/blog/impresion_digital.png" alt="imagen de impresion digital">
+    <img class="digital" src="imagenes/blog/impresion_digital.png" alt="imagen de impresion digital">
     <div class="blog">
         <h1>IMPRESIÓN DIGITAL</h1>
         <p>Si alguna vez imprimiste una hoja desde tu computadora, ya usaste impresión digital. Pero este proceso va mucho más allá de las impresoras domésticas. La impresión digital profesional ha revolucionado el mundo gráfico, permitiendo tirajes cortos, personalización y rapidez. En este blog te explicamos qué es la impresión digital, cómo funciona, sus ventajas y cuándo es la mejor opción frente a otros métodos como la impresión offset.</p>
@@ -279,10 +291,10 @@
         <h2>¿Cómo funciona?</h2>
         <p>En la impresión offset, se preparan planchas de impresión individuales para cada color del modelo CMYK. Cada plancha transfiere su color mediante un rodillo entintado, pasando la tinta a un cilindro de caucho, que finalmente imprime la imagen sobre el papel. Aunque este sistema requiere una preparación inicial más compleja, ofrece una calidad y consistencia excepcionales, especialmente en producciones de gran volumen. Por eso, la impresión offset sigue siendo una tecnología líder en el mundo gráfico, y la opción preferida por muchas empresas y proyectos editoriales que buscan eficiencia y alta calidad.</p>
     </div>
-    <img src="imagenes/blog/impresion_offset.png" alt="imagen de impresión offset">
+    <img class="offset" src="imagenes/blog/impresion_offset.png" alt="imagen de impresión offset">
  </div>
  
- <!-- seccion de footer -->
+<!-- seccion de footer -->
 <footer>
 
   <div class="container__footer">

@@ -1,3 +1,6 @@
+
+
+
 // Este es el javascritp del efecto cursor
 const dot = document.querySelector('.cursor-dot');
 const outline = document.querySelector('.cursor-outline');
@@ -12,7 +15,7 @@ document.addEventListener('mousemove', (e) => {
   dot.style.top = dotY + 'px';
 });
 
-// Función de animación para mover suavemente el círculo
+// Función de animación para mover suavemente el círculo portal del sitio
 function animate() {
   outlineX += (dotX - outlineX) * 0.1;
   outlineY += (dotY - outlineY) * 0.1;
@@ -26,78 +29,58 @@ function animate() {
 animate();
 
 
-// Esto es el efecto del carrusel 
 let slides = document.querySelectorAll('.slide');
 let index = 0;
-let autoSlideInterval; // Declarar la variable una sola vez
+let autoSlideInterval;
 
-// Función para mostrar el slide según el índice
 function mostrarSlide(nuevoIndex) {
-    slides.forEach(slide => slide.classList.remove('activo'));
-    slides[nuevoIndex].classList.add('activo');
+  slides.forEach(slide => slide.classList.remove('activo'));
+  slides[nuevoIndex].classList.add('activo');
 }
 
-// Función para ir al siguiente slide
 function siguienteSlide() {
-    index = (index + 1) % slides.length;
-    mostrarSlide(index);
+  index = (index + 1) % slides.length;
+  mostrarSlide(index);
 }
 
-// Función para ir al slide anterior
 function anteriorSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    mostrarSlide(index);
+  index = (index - 1 + slides.length) % slides.length;
+  mostrarSlide(index);
 }
 
-// Función para reiniciar el intervalo cuando se haga un clic en las flechas
 function resetInterval() {
-    clearInterval(autoSlideInterval); // Detener el intervalo anterior
-    autoSlideInterval = setInterval(siguienteSlide, 8000); // Reiniciar con 8 segundos
+  clearInterval(autoSlideInterval);
+  autoSlideInterval = setInterval(siguienteSlide, 8000);
 }
 
-// Iniciar el intervalo automático con 8 segundos
 autoSlideInterval = setInterval(siguienteSlide, 8000);
 
-// Control manual con flechas:
 document.querySelector('.siguiente').addEventListener('click', () => {
-    siguienteSlide();
-    resetInterval(); // Reinicia el intervalo cada vez que se hace click
+  siguienteSlide();
+  resetInterval();
 });
 
 document.querySelector('.anterior').addEventListener('click', () => {
-    anteriorSlide();
-    resetInterval(); // Reinicia el intervalo cada vez que se hace click
+  anteriorSlide();
+  resetInterval();
 });
 
-// Mostrar el primer slide al cargar la página
 mostrarSlide(index);
 
-// efecto contorno de la imagen de bienvenida
+// Animación de contorno si hay una imagen con clase .imagen
 const contenedor = document.querySelector('.imagen');
-  let angle = 0;
-  let pause = false;
+if (contenedor) {
+    let angle = 0;
 
-  function animarBorde() {
-    if (!pause) {
-      angle += 1; // velocidad de rotación (ajustable)
-
-      if (angle >= 360) {
-        angle = 360;
-        pause = true;
-        setTimeout(() => {
-          angle = 0;
-          pause = false;
-        }, 1000); // pausa de 1 segundo
-      }
-
-      contenedor.style.setProperty('--angle', `${angle}deg`);
+    function animarBorde() {
+        // Reducimos el incremento del ángulo para que sea más lento
+        angle = (angle + 1) % 360; // Antes era +3
+        contenedor.style.setProperty('--angle', `${angle}deg`);
+        requestAnimationFrame(animarBorde);
     }
 
     requestAnimationFrame(animarBorde);
-  }
-
-  // Iniciar la animación
-  requestAnimationFrame(animarBorde);
+}
 
 // mostrar/ocultar menú en móviles
 const toggleBtn = document.querySelector('.menu-toggle');
@@ -131,35 +114,147 @@ enlaces.forEach((enlace) => {
   }
 });
 
-// Libreria GSAP para las animaciones
 
-// Animacion de inicio para el logo con class (.logo)
+// Esperamos que se cargue todo el contenido de la página
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const contenido = document.getElementById("contenido");
+
+  // Aseguramos que se ejecute después de una pequeña pausa (opcional)
+  setTimeout(() => {
+    loader.classList.add("ocultar");
+    contenido.classList.remove("oculto");
+  }, 900); // puedes ajustar el tiempo si deseas
+});
+
+// ANIMACIONES CON GSAP
+  // Animacion de inicio para el logo con class (.logo)
 let logo = document.querySelector(".logo") 
 gsap.from(logo,{
     x: -200,
    // rotate: 360,
     scale: 1,
-   // delay: 1,
+    delay: 0.900,
     duration: 3,
     ease: "bounce.out"
 })
 
-// Animacion de inicio para el Menu
+  // Animacion de inicio para el Menu
 gsap.from(".menu-item",{
   y: -200,
   ease:"power.out",
+  delay: 0.900,
   //duration:1,
   stagger:0.25
 })
 
-// Animacion de inicio numero de contacto
+  // Animacion de inicio numero de contacto
 let contacto = document.querySelector(".contacto") 
 gsap.from(contacto,{
     x: 200,
    // rotate: 360,
     scale: 1,
-   // delay: 1,
+    delay: 0.900,
     duration: 3,
     ease: "bounce.out"
 })
 
+// Animacion Gsap con scrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+    // Animacion la parte de bienvenidos
+const animaciones = [
+  { selector: ".contenido-bienvenido h1", efecto: "animate__backInRight" },
+  { selector: ".contenido-bienvenido p", efecto: "animate__fadeInUp" },
+  { selector: ".imagen", efecto: "animate__zoomIn" },
+  { selector: ".contenido-bienvenido h4", efecto: "animate__fadeInTopLeft" }
+];
+
+animaciones.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "3s"); // duración en segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});
+
+    // Animacion de la seccion haz crecer tu negocio
+gsap.from(".banner .subtitulo",{
+  scrollTrigger:".banner .subtitulo",
+  x: 200,
+  duration: 2,
+  ease: "elastic.in(1,0.3)"
+})
+
+gsap.from(".banner .titulo",{
+  scrollTrigger:".banner .titulo",
+  x: -200,
+  duration: 2,
+  scale: 0.5,
+  opacity: 0,
+  ease: "power4.inOut"
+})
+
+gsap.from(".banner a",{
+  scrollTrigger:".banner a",
+  duration: 4,
+  scale: 0.5,
+  opacity: 0,
+  ease: "power4.inOut"
+})
+
+    // Animacion de la seccion impresion digital, offset y diseño
+const animaciones_impresion = [
+  { selector: ".seccion-diseno .digital", efecto: "animate__backInLeft" },
+  { selector: ".seccion-diseno .offset", efecto: "animate__flipInX" },
+  { selector: ".seccion-diseno .grafico", efecto: "animate__fadeInRight" },
+];
+
+animaciones_impresion.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "5s"); // duración 5 segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});
+
+    // Animacion de la seccion de contacto
+const animaciones_contacto = [
+  { selector: ".contenedor_info .contacto_info", efecto: "animate__fadeInBottomLeft" },
+  { selector: ".contenedor_info .form_cotizacion", efecto: "animate__flipInX" },
+];
+
+animaciones_contacto.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "4s"); // duración 5 segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});

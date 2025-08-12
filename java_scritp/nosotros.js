@@ -12,7 +12,7 @@ document.addEventListener('mousemove', (e) => {
   dot.style.top = dotY + 'px';
 });
 
-// Función de animación para mover suavemente el círculo
+// Función de animación para mover suavemente el círculo portal del sitio
 function animate() {
   outlineX += (dotX - outlineX) * 0.1;
   outlineY += (dotY - outlineY) * 0.1;
@@ -24,7 +24,6 @@ function animate() {
 }
 
 animate();
-
 
 // mostrar/ocultar menú en móviles
 const toggleBtn = document.querySelector('.menu-toggle');
@@ -62,7 +61,7 @@ window.addEventListener("load", () => {
   const loader = document.getElementById("loader");
   const contenido = document.getElementById("contenido");
 
-  // Aseguramos que se ejecute después de una pequeña pausa (opcional)
+    // Aseguramos que se ejecute después de una pequeña pausa (opcional)
   setTimeout(() => {
     loader.classList.add("ocultar");
     contenido.classList.remove("oculto");
@@ -71,8 +70,7 @@ window.addEventListener("load", () => {
 
 
 // ANIMACIONES CON GSAP
-
-// Animacion de inicio para el logo con class (.logo)
+  // Animacion de inicio para el logo con class (.logo)
 let logo = document.querySelector(".logo") 
 gsap.from(logo,{
     x: -200,
@@ -83,7 +81,7 @@ gsap.from(logo,{
     ease: "bounce.out"
 })
 
-// Animacion de inicio para el Menu
+  // Animacion de inicio para el Menu
 gsap.from(".menu-item",{
   y: -200,
   ease:"power.out",
@@ -92,7 +90,7 @@ gsap.from(".menu-item",{
   stagger:0.25
 })
 
-// Animacion de inicio numero de contacto
+    // Animacion de inicio numero de contacto
 let contacto = document.querySelector(".contacto") 
 gsap.from(contacto,{
     x: 200,
@@ -102,7 +100,7 @@ gsap.from(contacto,{
     duration: 3,
     ease: "bounce.out"
 })
-// animaciones contacto
+    // animaciones contacto
 gsap.from(".servicios-banner h1",{
   y: -200,
   ease:"power.out",
@@ -110,3 +108,52 @@ gsap.from(".servicios-banner h1",{
   duration:1,
   stagger:0.25
 })
+
+// Animacion Gsap con scrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+    // Animacion de la seccion Acerca de la empresa
+const animaciones_acerca = [
+  { selector: ".container .experience-badge", efecto: "animate__backInRight" },
+  { selector: ".container .image-container", efecto: "animate__fadeInUp" },
+];
+
+animaciones_acerca.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "3s"); // duración 5 segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});
+
+// Animacion de la seccion Acerca de la empresa
+const animaciones_mision_vision = [
+  { selector: ".mision-vision-horizontal .imagen_mision", efecto: "animate__fadeInTopLeft" },
+  { selector: ".mision-vision-horizontal .imagen_vision", efecto: "animate__fadeInBottomRight" },
+];
+
+animaciones_mision_vision.forEach(({ selector, efecto }) => {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.classList.add("animate__animated");
+    elemento.style.setProperty("--animate-duration", "3s"); // duración 5 segundos
+
+    ScrollTrigger.create({
+      trigger: elemento,
+      once: true,
+      onEnter: () => {
+        // Sin delay, se añade la clase justo al entrar
+        elemento.classList.add(efecto);
+      }
+    });
+  }
+});

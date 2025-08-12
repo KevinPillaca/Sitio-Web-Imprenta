@@ -5,8 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Imprenta</title>
   <link rel="stylesheet" href="css_estilos/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 </head>
 <body>
+  <!-- Efecto carga al inciar-->
+  <div id="loader">
+      <div class="cmyk-loader">
+        <div class="gota cyan"></div>
+        <div class="gota magenta"></div>
+        <div class="gota yellow"></div>
+        <div class="gota black"></div>
+      </div>
+  </div>
 
   <!-- Efecto del cursor-->
   <div class="cursor-dot"></div>
@@ -43,9 +54,9 @@
     <ul>
       <li class="menu-item"><a href="hogar.html">Hogar</a></li>
       <li class="menu-item"><a href="servicios.html">Servicios</a></li>
-      <li class="menu-item"><a href="#">Acerca de</a></li>
+      <li class="menu-item"><a href="nosotros.html">Nosotros</a></li>
       <li class="menu-item"><a href="blog.html">Blog</a></li>
-      <li class="menu-item"><a href="#">Contacto</a></li>
+      <li class="menu-item"><a href="contacto.html">Contacto</a></li>
     </ul>
   </nav>
 
@@ -62,43 +73,42 @@
   
 <!-- Esto es el main de la pagina - portal de bienvenidad -->
 <div class="carrusel">
-  <div class="slide activo" style="background-image: url('imagenes/carrusel_foto1.jpg');">
+    <div class="slide activo" style="background-image: url('imagenes/carrusel_foto1.jpg');">
       <div class="contenido">
-          <h4>Bienvenidos A GrafiPrint</h4>
-          <h2>La mejor agencia de impresión <br> Digital </h2>
-          <p>Nos especializamos en impresión digital como <br> 
-            <span class="salto"> banner, vinilos para todo tipo de publicidad.</span></p>
-            <a href=""><div class="button_Portal">DESCUBRE MAS > </div></a>
+        <h4>Bienvenidos A GrafiPrint</h4>
+        <h2>La mejor agencia de impresión <br> Digital </h2>
+        <p>Nos especializamos en impresión digital como <br> 
+          <span class="salto">banner, vinilos para todo tipo de publicidad.</span></p>
+        <a href="#" class="button_Portal">DESCUBRE MÁS ></a>
       </div>
-  </div>
+    </div>
 
-  <div class="slide" style="background-image: url('imagenes/carrusel_foto2.jpg');">
+    <div class="slide" style="background-image: url('imagenes/carrusel_foto2.jpg');">
       <div class="contenido">
-          <h4>¿Necesitas Algo Impreso Rápido?</h4>
-          <h2>Encontraste el lugar correcto</h2>
-          <p>Con más de 5 años de experiencia, un equipo profesional y la última <br>
-            <span class="salto">tecnología y software, estamos aquí para ayudarte con todas sus necesidades.</span></p>
-            <a href=""><div class="button_Portal">DESCUBRE MAS > </div></a>
+        <h4>¿Necesitas Algo Impreso Rápido?</h4>
+        <h2>Encontraste el lugar correcto</h2>
+        <p>Con más de 5 años de experiencia, un equipo profesional y la última <br>
+          <span class="salto">tecnología y software, estamos aquí para ayudarte con todas tus necesidades.</span></p>
+        <a href="#" class="button_Portal">DESCUBRE MÁS ></a>
       </div>
-  </div>
+    </div>
 
-  <div class="slide" style="background-image: url('imagenes/carrusel_foto3.jpg');">
+    <div class="slide" style="background-image: url('imagenes/carrusel_foto3.jpg');">
       <div class="contenido">
-          <h4>Incluso Podemos Ayudarte Con</h4>
-          <h2>Proyecto de diseño gráfico</h2>          
-          <p>Y asegúrese de que sus banner, vinilos, tarjetas de presentación, volantes y <br>
-            <span class="salto">todos los demás materiales tengan el aspecto profesional que necesita para el </span> 
-              <span class="salto">éxito de su negocio.</span> </p>
-              <a href=""><div class="button_Portal">DESCUBRE MAS > </div></a>
+        <h4>Incluso Podemos Ayudarte Con</h4>
+        <h2>Proyecto de diseño gráfico</h2>          
+        <p>Y asegúrate de que tus banner, vinilos, tarjetas de presentación, volantes y <br>
+          <span class="salto">todos los demás materiales tengan el aspecto profesional que necesita tu</span> 
+          <span class="salto">negocio para tener éxito.</span></p>
+        <a href="#" class="button_Portal">DESCUBRE MÁS ></a>
       </div>
-  </div>
-  
-  <div class="flechas">
-    <span class="anterior">&#10094;</span>
-    <span class="siguiente">&#10095;</span>
-  </div>
+    </div>
 
-</div>
+    <div class="flechas">
+      <span class="anterior">&#10094;</span>
+      <span class="siguiente">&#10095;</span>
+    </div>
+  </div>
 
 
 <!-- esto es la parte de los logos de los software de diseño -->
@@ -155,7 +165,7 @@
     </div>
 
     <div class="cuadrados">
-      <div class="cuadrado_principal">
+      <div class="cuadrado_principal digital">
         <div class="cuadro_imagen">
           <img src="imagenes/impresion_digital.jpg" alt="Impresión digital">
         </div>
@@ -164,7 +174,7 @@
         <a href=""><h2>más información...</h2></a>
       </div>
     
-      <div class="cuadrado_principal">
+      <div class="cuadrado_principal offset">
         <div class="cuadro_imagen">
           <img src="imagenes/impresion_offset.jpg" alt="Impresión offset">
         </div>
@@ -173,7 +183,7 @@
         <a href=""><h2>más información...</h2></a>
       </div>
     
-      <div class="cuadrado_principal">
+      <div class="cuadrado_principal grafico">
         <div class="cuadro_imagen">
           <img src="imagenes/servicio_diseno.jpg" alt="Servicio de diseño">
         </div>
@@ -199,15 +209,15 @@
   <div class="info_servicios">
       <h1>SOLO LLÁMANOS</h1>
       <h2>OFRECEMOS UNA <br> AMPLIA GAMA DE <br> SERVICIOS</h2>
-      <p>Su negocio es demasiado importante como para depender de un diseño básico. <br>
-         Ya sea que busque promocionar un producto o anunciar un servicio, podemos <br> 
+      <p>Su negocio es demasiado importante como para depender de un diseño básico. 
+         Ya sea que busque promocionar un producto o anunciar un servicio, podemos 
          ayudarle a diseñar un diseño que llegue a su público y transmita su mensaje.</p>
       <ul>
-          <li>Posters y sobres</li>
-          <li>Folletos y libros</li>
-          <li>Carpeta de presentación</li>
-          <li>Tarjetas de presentación</li>
-          <li>Cuadernos de trabajo de seminario</li>
+          <li>roll screen</li>
+          <li>Volantes</li>
+          <li>Tarjetas de presentacion</li>
+          <li>banners</li>
+          <li>vinilos</li>
           <li>Impresión de eventos</li>
       </ul>
   </div>
@@ -255,7 +265,7 @@
     <div class="contacto_info">
           <h2>NUESTROS CONTACTOS</h2>
           <div class="contacto_item">
-              <img src="iconos/ubicacion_1.svg" alt="Ubicacion"></a>
+              <img src="iconos/ubicacion.svg" alt="Ubicacion"></a>
               <div class="datos_contacto">
                 <h2>NUESTRA OFICINA</h2>
                 <p>123, NewAvenue, Chicago, IL 60606</p>

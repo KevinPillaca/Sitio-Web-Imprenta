@@ -274,14 +274,14 @@ body {
 .carrusel {
   position: relative;
   width: 100%;
-  height: 630px;
+  min-height: 630px;
   overflow: hidden;
 }
 
 .slide {
   position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -291,6 +291,11 @@ body {
   transform: scale(1.1);
   transition: opacity 1s ease, transform 1s ease;
   z-index: 0;
+  padding: 20px;
+  /* Add the semi-transparent pink overlay here */
+  background-color: rgba(255, 0, 255, 0.3); /* rosado semitransparente */
+  /* Ensure the background image is still visible underneath */
+  background-blend-mode: overlay; /* This blends the color with the background image */
 }
 
 .slide.activo {
@@ -300,24 +305,27 @@ body {
 }
 
 .contenido {
-  background: hwb(306 0% 0% / 0.4);
+  /* Remove the background from here, as it's now on the .slide */
+  /* background: rgba(255, 0, 255, 0.3); */
   width: 100%;
-  height: 100%;
+  max-width: 1000px;
+  height: auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  padding: 20px;
   border-radius: 10px;
   color: white;
   opacity: 0;
   transform: translateY(30px);
   transition: all 1s ease;
- }
+}
 
 .slide.activo .contenido {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* === Animación suave para textos, SIN incluir el botón === */
 
 .contenido h4,
 .contenido h2,
@@ -331,7 +339,7 @@ body {
   opacity: 1;
   transform: translateY(0);
   transition-delay: 0.3s;
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
 .slide.activo .contenido h2 {
@@ -348,8 +356,6 @@ body {
   margin-top: 5px;
 }
 
-/* === Botón: transiciones separadas === */
-
 .button_Portal {
   background-color: #00aaff;
   color: #FFF;
@@ -361,21 +367,18 @@ body {
   letter-spacing: 1px;
   cursor: pointer;
   box-shadow: inset 0 0 0 0 #2932b2;
-  -webkit-transition: ease-out 0.4s;
-  -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
   margin-top: 30px;
+  text-decoration: none;
 }
+
 .button_Portal:hover {
   box-shadow: inset 0 0 0 50px #024c9b;
 }
 
-/* === Diseño de textos === */
-
 .contenido h4 {
   color: #00ffe5;
   font-size: 28px;
-  margin-top: 100px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
 }
 
@@ -384,12 +387,6 @@ body {
   color: #00c3ff;
   font-weight: 800;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
-}
-
-.contenido h1 {
-  font-size: 68px;
-  color: white;
-  font-weight: bold;
 }
 
 .contenido p {
@@ -404,8 +401,7 @@ body {
   margin-top: 8px;
 }
 
-/* === Flechas de Navegación === */
-
+/* Flechas más pequeñas */
 .flechas {
   position: absolute;
   width: 100%;
@@ -419,13 +415,13 @@ body {
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
-  font-size: 40px;
+  font-size: 28px;
   color: white;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
   background: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 42px;
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -445,163 +441,319 @@ body {
   background: rgba(0, 0, 0, 0.8);
 }
 
+/* Responsive */
+@media (max-width: 1024px) {
+  .contenido h2 {
+    font-size: 48px;
+  }
+
+  .contenido p {
+    font-size: 18px;
+  }
+
+  .button_Portal {
+    padding: 16px 28px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contenido h4 {
+    font-size: 22px;
+    margin-top: 35px; /* Adjusted for better mobile spacing */
+  }
+
+  .contenido h2 {
+    font-size: 36px;
+    margin-top: 15px; /* Increased for more space */
+  }
+
+  .contenido p {
+    font-size: 16px;
+    margin-top: 25px; /* Increased for more space */
+  }
+
+  .button_Portal {
+    padding: 14px 26px;
+    font-size: 14px;
+    margin-top: 25px; /* Adjusted */
+  }
+
+  .flechas span {
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contenido h4 {
+    font-size: 18px;
+    margin-top: 30px; /* Adjusted for smallest screens */
+  }
+
+  .contenido h2 {
+    font-size: 28px;
+    margin-top: 15px; /* Consistent spacing */
+  }
+
+  .contenido p {
+    font-size: 14px;
+    margin-top: 20px; /* Consistent spacing */
+  }
+
+  .button_Portal {
+    padding: 12px 20px;
+    font-size: 13px;
+    margin-top: 20px; /* Adjusted for smallest screens */
+  }
+
+  .contenido {
+    padding: 30px 10px; /* Increased vertical padding for overall content box spacing */
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .flechas span {
+    font-size: 22px;
+    width: 32px;
+    height: 32px;
+  }
+}
 /* este es el style de la parte de los logos de los software de diseño*/
 .icon-container {
-  display: flex;
-  gap: 170px;
-  padding: 20px;
-  background-color: #e5e5e5c2;
-  justify-content: center;
-  align-items: center;
-  height: 130px;
+    display: flex;
+    gap: 170px;
+    padding: 20px;
+    background-color: #e5e5e5c2;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
 }
 
 .icon-container a {
-  display: block;
+    display: block;
 }
 
 .icon-container img {
-  height: 80px;
-  filter: grayscale(100%);
-  transition: 
-    filter 0.3s ease, 
-    brightness 0.3s ease, 
-    transform 0.3s cubic-bezier(0.25, 1.25, 0.5, 1.05); /* efecto rebote */
+    height: 80px;
+    filter: grayscale(100%);
+    transition:
+        filter 0.3s ease,
+        brightness 0.3s ease,
+        transform 0.3s cubic-bezier(0.25, 1.25, 0.5, 1.05); /* efecto rebote */
 }
 
 .icon-container img:hover {
-  filter: grayscale(0%) brightness(0.8);
-  transform: scale(1.15);
+    filter: grayscale(0%) brightness(0.8);
+    transform: scale(1.15);
 }
 
-/* este es el style de la parte de bienvenidos*/
+/* --- Media Query para dispositivos móviles --- */
+@media (max-width: 768px) {
+    .icon-container {
+        flex-wrap: wrap;
+        gap: 35px;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .icon-container img {
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .icon-container {
+        gap: 20px;
+        justify-content: space-around;
+    }
+
+    .icon-container img {
+        height: 50px;
+    }
+}
+
+/* esto es el style de la parte de bienvenidos  */
 .seccion-diseno {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 60px 20px;
-  position: relative;
-  background: white;
-  gap: 100px;
-  height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    position: relative;
+    background: white;
+    gap: 100px;
+    height: 550px;
+    overflow: hidden;
 }
 
 .decoracion-puntos {
-  position: absolute;
+    position: absolute;
 }
 
 .decoracion-puntos.izquierda {
-  top: 50px;
-  left: 20px;
-  width: 450px;
-  z-index: 0;
+    top: 50px;
+    left: 20px;
+    width: 450px;
+    z-index: 0;
 }
 
 .decoracion-puntos.derecha {
-  bottom: 50px;
-  right: 20px;
-  width: 450px;
-  z-index: 0;
+    bottom: 50px;
+    right: 20px;
+    width: 450px;
+    z-index: 0;
 }
 
 .decoracion-puntos img {
-  width: 100%;
-  opacity: 0.4;
+    width: 100%;
+    opacity: 0.4;
 }
 
 .contenido-bienvenido {
-  max-width: 500px;
-  text-align: left;
-  z-index: 1;
+    max-width: 500px;
+    text-align: left;
+    z-index: 1;
 }
 
 .contenido-bienvenido h4 span {
-  color: #e62ea1;
-  font-weight: bold;
-  font-size: 18px;
+    color: #e62ea1;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .contenido-bienvenido h1 {
-  font-size: 37px;
-  font-weight: 900;
-  line-height: 1.2;
-  margin: 15px 0;
-  margin-top: 50px;
+    font-size: 37px;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 15px 0;
+    margin-top: 50px;
 }
 
 .contenido-bienvenido p {
-  font-size: 16px;
-  color: #333;
-  line-height: 1.6;
-  margin-top: 50px;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin-top: 50px;
 }
 
 .imagen {
-  position: relative;
-  display: inline-block;
-  z-index: 1;
-  --angle: 0deg; /* valor inicial de rotación */
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    --angle: 0deg;
+    --borde-color-base: #0f89ed;
+    --borde-color-cola: rgba(15, 137, 237, 0.2);
+    --segmento-size: 90deg;
 }
 
 .imagen img {
-  width: 100%;
-  max-width: 500px;
-  border-radius: 10px;
-  display: block;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    display: block;
 }
 
-/* Borde animado controlado por JS */
 .imagen::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  left: -4px;
-  width: calc(100% + 8px);
-  height: calc(100% + 8px);
-  border-radius: 12px;
-  border: 2px solid transparent;
-  background: linear-gradient(0deg, #0f89ed, #0f89ed) border-box;
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: destination-out;
-  pointer-events: none;
-  z-index: 2;
-  transform: rotate(var(--angle));
-  transform-origin: center;
-  transition: transform 0.01s linear;
+    content: "";
+    position: absolute;
+    /* Aumentamos los valores para un contorno más separado */
+    top: -6px; /* Antes -4px */
+    left: -6px; /* Antes -4px */
+    width: calc(100% + 12px); /* Antes calc(100% + 8px) */
+    height: calc(100% + 12px); /* Antes calc(100% + 8px) */
+    border-radius: 14px; /* Aumentamos un poco el radio para que coincida con el nuevo tamaño */
+    border: 2px solid transparent;
+    background: conic-gradient(
+        from var(--angle),
+        var(--borde-color-cola) 0deg,
+        var(--borde-color-cola) calc(360deg - var(--segmento-size)),
+        var(--borde-color-base) calc(360deg - var(--segmento-size)),
+        var(--borde-color-base) 360deg
+    ) border-box;
+    mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Animación que hace girar la línea */
-@keyframes bordeFluido {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+/* --- Media Queries para hacer la sección responsive --- */
+
+@media (max-width: 1024px) {
+    .seccion-diseno {
+        flex-direction: column;
+        height: auto;
+        gap: 40px;
+        padding: 40px 20px;
+    }
+
+    .contenido-bienvenido {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .contenido-bienvenido h1 {
+        font-size: 32px;
+        margin-top: 20px;
+    }
+
+    .contenido-bienvenido h4 span {
+        font-size: 16px;
+    }
+
+    .contenido-bienvenido p {
+        font-size: 15px;
+        margin-top: 20px;
+    }
+
+    .imagen img {
+        max-width: 400px;
+    }
+
+    .decoracion-puntos {
+        display: none;
+    }
 }
-@keyframes bordeAnimado {
-  0% {
-    clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-  }
-  25% {
-    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  }
-  50% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0);
-  }
-  75% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
-  100% {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-  }
+
+@media (max-width: 768px) {
+    .seccion-diseno {
+        padding: 30px 15px;
+        gap: 30px;
+    }
+
+    .contenido-bienvenido h1 {
+        font-size: 28px;
+    }
+
+    .contenido-bienvenido h4 span {
+        font-size: 14px;
+    }
+
+    .contenido-bienvenido p {
+        font-size: 14px;
+    }
+
+    .imagen img {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seccion-diseno {
+        padding: 20px 10px;
+        gap: 20px;
+    }
+
+    .contenido-bienvenido h1 {
+        font-size: 24px;
+    }
 }
 
 
-/* este es el style de la seccion haz crecer tu negocio */
+/* style de la seccion haz crecer tu negocio*/
 .banner {
   position: relative;
   width: 100%;
@@ -612,7 +764,7 @@ body {
 .banner img.fondo {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Cubre toda el área sin deformar */
+  object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
@@ -625,7 +777,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 4, 217, 0.452); /* Color rosado semi-transparente */
+  background-color: rgba(255, 4, 217, 0.452);
   z-index: 2;
 }
 
@@ -641,7 +793,7 @@ body {
 
 .subtitulo {
   font-size: 24px;
-  color: #00ffe5; /* Celeste vibrante */
+  color: #00ffe5;
   margin-bottom: 20px;
 }
 
@@ -670,9 +822,58 @@ body {
   transition: ease-out 0.4s;
   margin-top: 40px;
 }
+
 .slide_left:hover {
   box-shadow: inset 0 0 0 50px #024c9b;
 }
+
+/* --- Estilos Responsive --- */
+@media (max-width: 1024px) {
+  .banner {
+    height: 500px;
+  }
+  .titulo {
+    font-size: 32px;
+    margin-top: 40px;
+  }
+  .subtitulo {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 450px;
+  }
+  .titulo {
+    font-size: 26px;
+  }
+  .subtitulo {
+    font-size: 18px;
+  }
+  .button_slide {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: 400px;
+  }
+  .titulo {
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  .subtitulo {
+    font-size: 16px;
+  }
+  .button_slide {
+    padding: 12px 24px;
+    font-size: 13px;
+  }
+} 
+
 
 /* seccion impresion digital, offset y diseño */
 .cuadrados {
@@ -680,7 +881,7 @@ body {
   justify-content: center;
   gap: 4rem;
   flex-wrap: wrap;
-  padding: 2rem 0;
+  padding: 2rem 1rem; /* reducido padding lateral en móviles */
   position: relative;
   z-index: 2;
 }
@@ -694,6 +895,8 @@ body {
   height: 400px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .cuadrado_principal:hover {
@@ -717,23 +920,77 @@ body {
 }
 
 .cuadrado_principal p {
-  font-size: 1.2rem;
-  margin: 1rem 0 0.5rem;
+  font-size: 1rem;
+  margin: 0.5rem 1rem 0.5rem;
   color: #858585;
-  font-size: 16px;
-} 
+  flex-grow: 1;
+}
 
 .cuadrado_principal a {
   text-decoration: underline;
-  text-decoration-color: transparent; /* oculto por defecto */
-  text-decoration-thickness: 1px; /* Establece el grosor de la línea a 1 píxel */
-  text-underline-offset: 4px; /* Separa la línea 3 píxeles del texto */
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
   color: #05dac4;
   transition: text-decoration-color 0.3s ease;
-  }
+  margin-bottom: 1rem;
+  display: inline-block;
+}
 
 .cuadrado_principal a:hover {
-  text-decoration-color: #fe07c5; /* cambia la raya al pasar el cursor */
+  text-decoration-color: #fe07c5;
+}
+
+/* Responsive: Tablets y móviles */
+@media (max-width: 768px) {
+  .cuadrados {
+    gap: 2rem;
+  }
+
+  .cuadrado_principal {
+    width: 90%;
+    max-width: 340px;
+    height: auto; /* Permitir altura automática si el contenido cambia */
+  }
+
+  .cuadro_imagen img {
+    height: 180px;
+  }
+
+  .cuadrado_principal h1 {
+    font-size: 1.1rem;
+  }
+
+  .cuadrado_principal p {
+    font-size: 0.95rem;
+  }
+
+  .cuadrado_principal a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cuadrados {
+    gap: 1.5rem;
+  }
+
+  .cuadrado_principal {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cuadro_imagen img {
+    height: 160px;
+  }
+
+  .cuadrado_principal h1 {
+    font-size: 1rem;
+  }
+
+  .cuadrado_principal p {
+    font-size: 0.9rem;
+  }
 }
 
 
@@ -742,21 +999,22 @@ body {
   background-color: #fff;
   display: flex;
   width: 100%;
-  height: 650px;
+  height: auto; /* Cambiado para que crezca con el contenido */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
-  }
+  flex-wrap: wrap; /* permite que cambie de formato en pantallas pequeñas */
+}
 
 .imageenes_servicios {
   flex: 1;
   display: flex;
-  flex-wrap: wrap; /* Permite que pasen a otra línea si no hay espacio */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   background-color: #673AB7;
   padding: 20px;
-  gap: 20px; /* Espacio entre imágenes */
+  gap: 20px;
 }
 
 .imageenes_servicios img {
@@ -770,9 +1028,9 @@ body {
   background-color: #673AB7;
   color: #fff;
   padding: 40px;
-  display: flex; /* Ya lo tienes, lo mantenemos */
-  flex-direction: column; /* Aseguramos que los elementos internos se apilen verticalmente */
-  justify-content: center; /* Esto centrará verticalmente el contenido */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .info_servicios h1 {
@@ -783,7 +1041,7 @@ body {
 
 .info_servicios h2 {
   font-size: 3.8em;
-  margin-top: 0%;
+  margin-top: 0;
   margin-bottom: 20px;
   font-weight: bold;
 }
@@ -799,7 +1057,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0px;
-  align-items: start; /* Añadimos esta propiedad para alinear los items al inicio */
+  align-items: start;
 }
 
 .info_servicios ul li {
@@ -825,10 +1083,108 @@ body {
   padding-left: 5px;
 }
 
+/* ============ MEDIA QUERIES PARA RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .info_servicios h2 {
+    font-size: 2.8em;
+  }
+
+  .imageenes_servicios img {
+    width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_servicios {
+    flex-direction: column; /* apilado en móviles */
+  }
+
+  .imageenes_servicios,
+  .info_servicios {
+    flex: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .imageenes_servicios {
+    justify-content: center;
+  }
+
+  .imageenes_servicios img {
+    width: 70%; /* imágenes más grandes en móvil */
+  }
+
+  .info_servicios h2 {
+    font-size: 2.2em;
+    text-align: center;
+  }
+
+  .info_servicios h1,
+  .info_servicios p,
+  .info_servicios ul {
+    text-align: center;
+  }
+
+   .info_servicios ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;   /* dos columnas */
+    max-width: 500px;                 /* centrado sin expandirse */
+    margin: 0 auto;                   /* centra el UL dentro del div */
+    text-align: left;                 /* li alineado a la izquierda */
+    gap: 0px 15px; /* Aquí aplicamos el cambio */
+    padding-bottom: 30px;
+  }
+
+  .info_servicios ul li {
+    justify-content: flex-start;     /* asegura que el contenido del li esté a la izquierda */
+  }
+}
+
+@media (max-width: 480px) {
+  .info_servicios h2 {
+    font-size: 1.8em;
+  }
+
+  .info_servicios h1 {
+    font-size: 1.2em;
+  }
+
+  .imageenes_servicios img {
+    width: 90%;
+  }
+
+  .info_servicios {
+    padding: 20px 10px;
+  }
+}
+
+/* Animación de flotación */
+@keyframes flotar {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Aplica animación a cada imagen */
+.imageenes_servicios img {
+  width: 47%;
+  height: auto;
+  object-fit: contain;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+
+
 /* style de Guia de pedidos */
 
 .container_pedido {
-  background-color: #dadada86;
+  background-color: #dadadaa6;
   width: 100%;
   height: auto;
   display: flex;
@@ -1018,6 +1374,71 @@ body {
   box-shadow: inset 400px 50px 0 0 #D80286;
 }
 
+@media (max-width: 768px) {
+  .contenedor_info {
+    height: auto; /* Para que crezca con el contenido */
+    padding: 40px;
+  }
+
+  .contenedor_contacto_cotizacion {
+    flex-direction: column; /* Cambia de fila a columna */
+    width: 100%;
+    height: auto;
+  }
+
+  .contacto_info,
+  .form_cotizacion {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .contacto_info h2,
+  .form_cotizacion h2 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .contacto_item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .contacto_item img {
+    width: 40px;
+    height: 45px;
+  }
+
+  .datos_contacto h2 {
+    font-size: 12px;
+  }
+
+  .datos_contacto p {
+    font-size: 13px;
+  }
+
+  .form_datos {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form_grupo input[type="text"],
+  .form_grupo input[type="email"],
+  .form_grupo textarea {
+    width: 100%;
+  }
+
+  .form_grupo textarea {
+    width: 100%;
+    min-height: 100px;
+  }
+
+  .button_info {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
+
 
 /* seccion de footer */
 footer {
@@ -1103,4 +1524,90 @@ footer {
   border: none;
   height: 1px;
   background-color: #ffffff;
+}
+
+
+/* animacion de carga*/
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* Ocultar cosas */
+.ocultar {
+  display: none !important;
+}
+
+.oculto {
+  display: none;
+}
+
+    /* Loader animado carga */
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.oculto {
+  display: none;
+}
+
+    /* Loader de gotas CMYK */
+.cmyk-loader {
+  display: flex;
+  gap: 16px;
+}
+
+.gota {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: rebote 1.2s infinite ease-in-out;
+}
+
+    /* Colores CMYK */
+.cyan {
+  background-color: #00bfff;
+  animation-delay: 0s;
+}
+.magenta {
+  background-color: #ff00ff;
+  animation-delay: 0.2s;
+}
+.yellow {
+  background-color: #ffff00;
+  animation-delay: 0.4s;
+}
+.black {
+  background-color: #000000;
+  animation-delay: 0.6s;
+}
+
+    /* Animación rebote */
+@keyframes rebote {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }

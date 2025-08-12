@@ -25,7 +25,6 @@ function animate() {
 
 animate();
 
-
 // mostrar/ocultar menú en móviles
 const toggleBtn = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.nav');
@@ -71,8 +70,7 @@ window.addEventListener("load", () => {
 
 
 // ANIMACIONES CON GSAP
-
-// Animacion de inicio para el logo con class (.logo)
+  // Animacion de inicio para el logo con class (.logo)
 let logo = document.querySelector(".logo") 
 gsap.from(logo,{
     x: -200,
@@ -83,7 +81,7 @@ gsap.from(logo,{
     ease: "bounce.out"
 })
 
-// Animacion de inicio para el Menu
+  // Animacion de inicio para el Menu
 gsap.from(".menu-item",{
   y: -200,
   ease:"power.out",
@@ -92,7 +90,7 @@ gsap.from(".menu-item",{
   stagger:0.25
 })
 
-// Animacion de inicio numero de contacto
+  // Animacion de inicio numero de contacto
 let contacto = document.querySelector(".contacto") 
 gsap.from(contacto,{
     x: 200,
@@ -102,6 +100,7 @@ gsap.from(contacto,{
     duration: 3,
     ease: "bounce.out"
 })
+
 // animaciones contacto
 gsap.from(".servicios-banner h1",{
   y: -200,
