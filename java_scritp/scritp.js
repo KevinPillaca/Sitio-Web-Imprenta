@@ -190,7 +190,7 @@ animaciones.forEach(({ selector, efecto }) => {
     // Animacion de la seccion haz crecer tu negocio
 gsap.from(".banner .subtitulo",{
   scrollTrigger:".banner .subtitulo",
-  x: 200,
+  x: 800,
   duration: 2,
   ease: "elastic.in(1,0.3)"
 })
@@ -198,7 +198,7 @@ gsap.from(".banner .subtitulo",{
 gsap.from(".banner .titulo",{
   scrollTrigger:".banner .titulo",
   x: -200,
-  duration: 2,
+  duration: 3,
   scale: 0.5,
   opacity: 0,
   ease: "power4.inOut"
@@ -214,9 +214,9 @@ gsap.from(".banner a",{
 
     // Animacion de la seccion impresion digital, offset y diseño
 const animaciones_impresion = [
-  { selector: ".seccion-diseno .digital", efecto: "animate__backInLeft" },
-  { selector: ".seccion-diseno .offset", efecto: "animate__flipInX" },
-  { selector: ".seccion-diseno .grafico", efecto: "animate__fadeInRight" },
+  { selector: ".seccion-diseno-2 .digital", efecto: "animate__backInLeft" },
+  { selector: ".seccion-diseno-2 .offset", efecto: "animate__flipInX" },
+  { selector: ".seccion-diseno-2 .grafico", efecto: "animate__fadeInRight" },
 ];
 
 animaciones_impresion.forEach(({ selector, efecto }) => {
@@ -256,5 +256,33 @@ animaciones_contacto.forEach(({ selector, efecto }) => {
         elemento.classList.add(efecto);
       }
     });
+  }
+});
+
+
+// Enviar formulario con FormSubmit
+const form = document.getElementById('formulario');
+const mensaje = document.getElementById('mensaje-form');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const res = await fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  mensaje.style.display = 'block';
+  mensaje.classList.remove('mensaje-exito', 'mensaje-error');
+
+  if (res.ok) {
+    form.reset();
+    mensaje.classList.add('mensaje-exito');
+    mensaje.textContent = 'Mensaje enviado. Pronto nos pondremos en contacto.';
+  } else {
+    mensaje.classList.add('mensaje-error');
+    mensaje.textContent = 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.';
   }
 });

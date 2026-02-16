@@ -109,3 +109,31 @@ gsap.from(".servicios-banner h1",{
   duration:1,
   stagger:0.25
 })
+
+
+// Enviar formulario con FormSubmit
+const form = document.getElementById('formulario');
+const mensaje = document.getElementById('mensaje-form');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+  const res = await fetch(form.action, {
+    method: 'POST',
+    body: formData,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  mensaje.style.display = 'block';
+  mensaje.classList.remove('mensaje-exito', 'mensaje-error');
+
+  if (res.ok) {
+    form.reset();
+    mensaje.classList.add('mensaje-exito');
+    mensaje.textContent = 'Mensaje enviado. Pronto nos pondremos en contacto.';
+  } else {
+    mensaje.classList.add('mensaje-error');
+    mensaje.textContent = 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.';
+  }
+});

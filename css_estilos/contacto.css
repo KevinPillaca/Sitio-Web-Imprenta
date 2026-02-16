@@ -48,7 +48,8 @@
 }
 
 .logo img {
-  height: 50px;
+  width: 160px;
+  height: auto;
 }
 
 .nav ul {
@@ -68,7 +69,7 @@
 }
 
 .nav ul li a:hover {
-  color: #ff4321;
+  color: #00aaff;
 }
 
 .contacto {
@@ -80,7 +81,7 @@
 .telefono-icono {
   width: 60px;
   height: 60px;
-  background: #ff4321;
+  background: #00aaff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -155,24 +156,25 @@
   }
 
   .logo img {
-    height: 38px;
+    width: 130px;
+    height: auto;
   }
 }
 
     /* (para la pagina actual) */
 .nav ul li a.activo {
-  color: #ff4321;
-  border-bottom: 2px solid #ff4321;
+  color: #00aaff;
+  border-bottom: 2px solid #00aaff;
   padding-bottom: 5px;
 }
 
 
 /* style del banner contacto */
 .servicios-banner {
-  position: relative; /* Necesario para posicionar el pseudo-elemento */
+  position: relative; 
   color: rgba(255, 255, 255, 0.844);
   text-align: center;
-  overflow: hidden; /* Asegura que el pseudo-elemento no se salga */
+  overflow: hidden; 
 }
 
 .servicios-banner img {
@@ -183,15 +185,13 @@
 }
 
 .servicios-banner::before {
-  content: ""; /* Necesario para que el pseudo-elemento se renderice */
+  content: ""; 
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #ff03b87a; /* Un morado semitransparente (ajusta el color y la opacidad) */
-  /* Otra opción sería usar un degradado semitransparente:
-  background-image: linear-gradient(rgba(103, 58, 183, 0.3), rgba(103, 58, 183, 0.7)); */
+  background-color: #ff03b87a; 
 }
 
 .servicios-banner h1 {
@@ -223,7 +223,7 @@
 }
 
 
-/* Asegura que el texto esté por encima de la capa semitransparente */
+/* style de la Sección de Contacto */
 .contactenos {
   background-color: #ffffff;
   width: 100%;
@@ -243,7 +243,7 @@
 }
 
 .descripcion h1 {
-  color: #d72323;
+  color: #ff03b8;
   font-size: 20px;
   margin-bottom: 30px;
 }
@@ -281,7 +281,7 @@
 .icono-circular {
   width: 60px;
   height: 60px;
-  background-color: #d72323;
+  background-color: #ff03b8;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -504,7 +504,7 @@
 }
 
 .formulario-contacto .subtitulo {
-  color: #e00000;
+  color: #00aaff;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
@@ -516,7 +516,7 @@
   margin-bottom: 40px;
 }
 
-.formulario {
+.formulario_tamaño {
   max-width: 900px;
   margin: 0 auto;
 }
@@ -538,7 +538,7 @@
   top: 50%;
   left: 10px;
   transform: translateY(-50%);
-  color: rgb(247, 31, 31);
+  color: #808181;
 }
 
 .campo input,
@@ -568,7 +568,7 @@
 }
 
 .boton-centro button {
-  background-color: #e00000;
+  background-color: #00aaff;
   color: white;
   font-weight: bold;
   padding: 12px 30px;
@@ -577,16 +577,36 @@
   cursor: pointer;
   font-size: 16px;
   transition: background-color 0.3s;
+  margin-bottom: 25px;
 }
 
 .boton-centro button:hover {
-  background-color: #c40000;
+  background-color: #5bd0f0;
 }
 .campo input::placeholder,
 .campo textarea::placeholder,
 .campo select:invalid {
   color: #9e9e9e;
 }
+
+.mensaje-form {
+  display: none;            /* Oculto por defecto */
+  text-align: center;
+  font-weight: 700;
+}
+
+.mensaje-exito {
+  color: #00aaff;
+  text-align: center;
+  font-family:Arial, sans-serif;
+  font-size: 15px;
+  opacity: 0.6;
+}
+
+.mensaje-error {
+  color: crimson;
+}
+
 @media (max-width: 768px) {
   .campo-doble {
     flex-direction: column;
@@ -595,7 +615,7 @@
     gap: 40px;
   }
   .campo textarea{
-   width: 0%;
+   width: 90%;
   }
 }
 
@@ -624,7 +644,7 @@ footer {
 }
 
 .box__footer .logo img {
-  width: 180px;
+  width: 230px;
 }
 
 .box__footer .terms {
@@ -665,7 +685,6 @@ footer {
 .box__footer a .fab {
   font-size: 20px;
 }
-
 .box__copyright {
   max-width: 1200px;
   margin: auto;
@@ -771,4 +790,98 @@ footer {
   100% {
     transform: translateY(0);
   }
+}
+
+/* CSS DE TODOS LOS FONDOS */
+    
+    /* fondo de la seccion del formulario contacto */
+.formulario-contacto {
+  position: relative;
+  background: #fff; /* fondo blanco */
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* detrás del contenido */
+}
+
+.background span {
+  position: absolute;
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: rgba(63, 63, 63, 0.3); /* gris suave */
+  bottom: -50px;
+  animation: float 10s linear infinite;
+  border-radius: 50%; /* si quieres círculos */
+}
+
+.background span:nth-child(1) {
+  left: 10%;
+  animation-duration: 12s;
+  width: 40px;
+  height: 40px;
+}
+.background span:nth-child(2) {
+  left: 30%;
+  animation-duration: 18s;
+}
+.background span:nth-child(3) {
+  left: 50%;
+  animation-duration: 10s;
+}
+.background span:nth-child(4) {
+  left: 70%;
+  animation-duration: 15s;
+}
+.background span:nth-child(5) {
+  left: 90%;
+  animation-duration: 20s;
+}
+.background span:nth-child(6) {
+  left: 25%;
+  animation-duration: 25s;
+}
+.background span:nth-child(7) {
+  left: 60%;
+  animation-duration: 30s;
+}
+.background span:nth-child(8) {
+  left: 80%;
+  animation-duration: 22s;
+}
+.background span:nth-child(9) {
+  left: 15%;
+  animation-duration: 17s;
+}
+.background span:nth-child(10) {
+  left: 45%;
+  animation-duration: 28s;
+}
+
+/* Animación */
+@keyframes float {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+    transform: translateY(-50vh) scale(1.2);
+  }
+  100% {
+    transform: translateY(-100vh) scale(0.8);
+    opacity: 0;
+  }
+}
+
+  /* Asegurar que el contenido quede encima */
+.formulario-contacto .contenedor {
+  position: relative;
+  z-index: 1;
 }

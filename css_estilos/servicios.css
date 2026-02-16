@@ -50,7 +50,8 @@ body {
 }
 
 .logo img {
-  height: 50px;
+  width:160px;
+  height: auto;
 }
 
 .nav ul {
@@ -70,7 +71,7 @@ body {
 }
 
 .nav ul li a:hover {
-  color: #ff4321;
+  color: #00aaff;
 }
 
 .contacto {
@@ -82,7 +83,7 @@ body {
 .telefono-icono {
   width: 60px;
   height: 60px;
-  background: #ff4321;
+  background: #00aaff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -159,14 +160,15 @@ body {
     display: block;
   }
   .logo img {
-  height: 38px;
+    width: 130px;
+    height: auto;
 }
 }
 
 /* (para la pagina actual) */
 .nav ul li a.activo {
-  color: #ff4321;
-  border-bottom: 2px solid #ff4321;
+  color: #00aaff;
+  border-bottom: 2px solid #00aaff;
   padding-bottom: 5px;
 }
 
@@ -234,123 +236,143 @@ body {
 }
 
 /* esta parte es el style de la card de los servicios */
-.container {
-  width: 100%;
-  height: auto;
+.cards-contenedor {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  justify-content: center;
+  gap: 80px; /* espacio entre cards */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 0;
+  
 }
 
-.card {
-  width: 300px;
-  height: auto;
-  background-color: #ffffff;
-  margin: 50px 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-radius: 30px;
-  box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* Desenfoque mayor y ligera extensión */
-  transition: box-shadow 0.3s ease; /* Transición suave para cuando interactúes */
-  border: 1px solid #15b0fe;
-}
-.card:hover {
-  box-shadow: 0px 10px 25px rgba(137, 137, 137, 0.495); /* Sombra más pronunciada al pasar el ratón */
+.card-servicio {
+  flex: 1 1 calc(33.333% - 40px); /* 3 en fila */
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 280px; /* asegura que no se encoja demasiado */
+  max-width: 340px;
 }
 
-.card img {
+.card-servicio:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.card-titulo {
+  background: #00aaff; /* azul celeste */
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 12px;
+  text-transform: uppercase;
+}
+
+.card-servicio img {
   width: 100%;
-  height: 200px;
-  object-fit: cover;
+  height: auto;
+  display: block;
 }
 
-.card a {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-}
-
-.card .button_arriba {
-  background-color: #ff03b8;
-  color: white;
-  height: 40px;
-  width: 130px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  margin-top: 40px; /* Espacio debajo del botón arriba */
-}
-.card .button_arriba:hover {
-  box-shadow: inset 400px 50px 0 0 #f946c6;
-}
-
-.card .button_abajo {
-  background-color: #15b0fe;
-  height: 40px;
-  width: 130px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px;
-  margin-bottom: 40px;
-  color: white;
-}
-.card .button_abajo:hover {
-  box-shadow: inset 400px 50px 0 0 #5ac4f9;
-}
-
-.description_card {
-  text-align: center;
-  margin-bottom: 30px;
-  margin-top: 30px;
-  margin-left:20px;
-  margin-right: 20px;
+.card-servicio p {
   font-size: 15px;
-  color: rgb(107, 107, 107);
+  color: #555;
+  padding: 15px;
+  line-height: 1.5;
 }
 
-.card h1 {
-  background-color:#15b0fe ;
-  color: #ffffff;
-  margin: 0%;
-  font-size: 20px;
-  text-align: center;
-  padding: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+.btn-cotizar {
+  width: 135px;
+  display: block;              /* botón como bloque */
+  margin: 0 auto 30px;         /* lo centra horizontal */
+  padding: 12px;
+  background: #f104ae; /* fucsia */
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-cotizar img {
+  width: 25px;
+  height: auto;
+  margin-right: 8px;
 }
 
-.card_magenta {
-  border: 1px solid #ff03b8;
+.btn-cotizar:hover {
+  background: #a71be8;
 }
-.card .producto_magenta {
-  background-color: #ff03b8;
-   border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+
+/* Responsivo */
+@media (max-width: 900px) {
+  .card-servicio {
+    flex: 1 1 calc(50% - 40px); /* 2 cards por fila */
+  }
 }
-.card_magenta.button_magenta {
-  background-color: #ff03b8 ;
+
+@media (max-width: 600px) {
+  .card-servicio {
+    flex: 1 1 100%; /* 1 card por fila */
+  }
+  .cards-contenedor {
+  
+  gap: 50px; /* espacio entre cards */
+  padding: 60px 0;
 }
-.card .button_arriba img {
-  width:20px;
-  height: 20px;
-  margin-right: 10px;
-  padding: 1px;
 }
-.card .button_abajo img {
-  width:20px;
-  height: 20px;
-  margin-right: 10px;
-  padding: 1px;
+/* ====== Modal para ampliar imagen ====== */
+.modal {
+  display: none; /* oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(32, 32, 32, 0.667);
+  align-items: center;   /* centra vertical */
+  justify-content: center; /* centra horizontal */
+  flex-direction: column;
+  
+}
+  /* Cuando el modal esté activo */
+.modal.activo {
+  display: flex;
+}
+
+
+.modal-contenido {
+  display: block;
+  margin: auto;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.cerrar {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.cerrar:hover {
+  color: #f104ae; /* color del hover */
 }
 
 /* style de Guia de pedidos */
@@ -455,7 +477,7 @@ footer {
 }
 
 .box__footer .logo img {
-  width: 180px;
+  width: 230px;
 }
 
 .box__footer .terms {
@@ -510,6 +532,7 @@ footer {
 }
 
 .box__copyright hr {
+  margin-top: 10px;
   border: none;
   height: 1px;
   background-color: #ffffff;

@@ -47,7 +47,8 @@
 }
 
 .logo img {
-  height: 50px;
+  width: 160px;
+  height: auto;
 }
 
 .nav ul {
@@ -67,7 +68,7 @@
 }
 
 .nav ul li a:hover {
-  color: #ff4321;
+  color: #00aaff;
 }
 
 .contacto {
@@ -79,7 +80,7 @@
 .telefono-icono {
   width: 60px;
   height: 60px;
-  background: #ff4321;
+  background: #00aaff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -153,18 +154,20 @@
   }
 
   .logo img {
-    height: 38px;
+    width: 130px;
+    height: auto;
   }
 }
 
     /* (para la pagina actual) */
 .nav ul li a.activo {
-  color: #ff4321;
-  border-bottom: 2px solid #ff4321;
+  color: #00aaff;
+  border-bottom: 2px solid #00aaff;
   padding-bottom: 5px;
 }
 
-/* style de nuestros servicios */
+
+/* style de banner blog grafico*/
 .servicios-banner {
   position: relative; /* Necesario para posicionar el pseudo-elemento */
   color: rgba(255, 255, 255, 0.844);
@@ -256,7 +259,10 @@ flex-direction: column;
 .contenido_blog_derecha h1 {
 margin-bottom: 1px;
 font-size: 25px;
-text-align: center;  
+text-align: center; 
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .contenido_blog_derecha h2 {
 margin-top: 15px;
@@ -304,6 +310,7 @@ margin-bottom: 10px;
   margin-bottom: 15px;  
   line-height: 1.6;     
 }
+
 /* separacion*/
 .separacion {
   margin-top: 10px;
@@ -392,6 +399,9 @@ margin-bottom: 10px;
 /* Espacio adicional entre h1 y h2 */
 .contenido_blog_izquierda h1 {
   margin-bottom: 30px;
+  text-decoration: underline; 
+  text-decoration-thickness: 2px; 
+  text-underline-offset: 6px;
 }
 
 /* Párrafos justificados con espacio inferior */
@@ -462,6 +472,9 @@ padding: 20px;
 .blogImagen .blog h1 {
 font-size: 25px;
 margin-bottom: 20px;
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .blogImagen .blog h2 {
 font-size: 25px;
@@ -570,6 +583,9 @@ padding: 20px;
 .blog_photoshop h1 {
 font-size: 25px;
 margin-bottom: 20px;
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .blog_photoshop h2 {
 font-size: 25px;
@@ -660,6 +676,9 @@ padding: 0 20px;
 font-size: 25px;
 margin-top: 20px;
 margin-bottom: 10px;
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .blog_canva h2 {
 font-size: 25px;
@@ -807,6 +826,9 @@ padding: 0 20px;
 font-size: 25px;
 margin-bottom: 20px;
 text-align: center;
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .blog_digital h2 {
 font-size: 25px;
@@ -863,6 +885,9 @@ padding: 20px;
 font-size: 25px;
 margin-bottom: 20px;
 text-align: center;
+text-decoration: underline; 
+text-decoration-thickness: 2px; 
+text-underline-offset: 6px;
 }
 .blog_offset h2 {
 font-size: 25px;
@@ -919,7 +944,7 @@ footer {
 }
 
 .box__footer .logo img {
-  width: 180px;
+  width: 230px;
 }
 
 .box__footer .terms {
@@ -976,7 +1001,7 @@ footer {
 .box__copyright hr {
   margin-top: 10px;
   border: none;
-  height: 1px;
+  height: 0.5px;
   background-color: #ffffff;
 }
 

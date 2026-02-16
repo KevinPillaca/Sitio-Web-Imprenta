@@ -52,7 +52,8 @@ body {
 }
 
 .logo img {
-  height: 50px;
+  width: 160PX;
+  height: auto;
 }
 
 .nav ul {
@@ -72,7 +73,7 @@ body {
 }
 
 .nav ul li a:hover {
-  color: #ff4321;
+  color: #00aaff;
 }
 
 .contacto {
@@ -84,7 +85,7 @@ body {
 .telefono-icono {
   width: 60px;
   height: 60px;
-  background: #ff4321;
+  background: #00aaff;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -161,14 +162,15 @@ body {
     display: block;
   }
   .logo img {
-  height: 38px;
+    width: 130px;
+  height: auto;
 }
 }
 
 /* (para la pagina actual) */
 .nav ul li a.activo {
-  color: #ff4321;
-  border-bottom: 2px solid #ff4321;
+  color: #00aaff;
+  border-bottom: 2px solid #00aaff;
   padding-bottom: 5px;
 }
 
@@ -281,7 +283,7 @@ body {
     position: absolute;
     top: -30px; /* Subido un poco menos */
     left: -30px;
-    background-color: #ff4d4f;
+    background-color: #00aaff;
     color: #fff;
     padding: 20px 25px; /* REDUCIDO el tamaño */
     border-radius: 5px;
@@ -312,7 +314,7 @@ body {
 .subtitle {
     font-size: 0.9em;
     font-weight: 600;
-    color: #ff4d4f;
+    color: #ff03b8;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 10px;
@@ -321,7 +323,7 @@ body {
 .main-title {
     font-size: 3.5em;
     font-weight: 700;
-    color: #1a237e;
+    color: #1f1f20;
     line-height: 1.1;
     margin: 0 0 20px 0;
 }
@@ -375,7 +377,7 @@ body {
 
 @media (max-width: 768px) {
     .main-title {
-        font-size: 2em;
+        font-size:40px;
     }
 
     .subtitle {
@@ -384,7 +386,7 @@ body {
     }
 
     .description {
-        font-size: 0.95em;
+        font-size: 0.97em;
     }
 
     .experience-badge {
@@ -460,36 +462,69 @@ body {
 }
 
 
-/* seccion por que elegirnos*/
+/* sección por qué elegirnos */
 .elegirnos {
+  position: relative; /* necesario para el fondo animado */
   padding: 40px 20px;
-  background-color: #222;
-  color: #fff;
+  background-color: #673AB7;
   text-align: center;
+  overflow: hidden; /* oculta exceso del fondo */
+}
+
+.elegirnos::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.126) 20%, transparent 70%),
+              radial-gradient(circle, rgba(234, 170, 7, 0.092) 15%, transparent 60%),
+              radial-gradient(circle, rgba(255, 255, 255, 0.085) 25%, transparent 70%);
+  background-size: 400px 400px, 600px 600px, 800px 800px;
+  animation: moverFondos 15s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moverFondos {
+  0% { transform: translate(0,0) rotate(0deg); }
+  50% { transform: translate(-10%, -10%) rotate(180deg); }
+  100% { transform: translate(0,0) rotate(360deg); }
 }
 
 .elegirnos h2 {
   font-size: 28px;
   margin-bottom: 30px;
+  color: rgb(234, 170, 7);
+  position: relative;
+  z-index: 1; /* encima del fondo */
 }
 
 .ventajas {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 25px;
+  position: relative;
+  z-index: 1; /* encima del fondo */
 }
 
 .ventaja {
-  background-color: #333;
+  background-color: rgba(232, 232, 232, 0.308);
   border-radius: 8px;
   padding: 20px;
   max-width: 250px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   text-align: left;
   transition: transform 0.3s;
+}
+
+.ventaja p {  
+  color: rgb(255, 255, 255);
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  line-height: 1.4;
 }
 
 .ventaja:hover {
@@ -515,7 +550,7 @@ body {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 50px;
-  color: #222;
+  color: #696969;
 }
 
 /* Filas */
@@ -557,7 +592,7 @@ body {
 }
 
 .titulo-mv {
-  background-color: #007bff;
+  background-color: #00aaff;
   color: #fff;
   padding: 20px;
   font-weight: bold;
@@ -654,7 +689,7 @@ footer {
 }
 
 .box__footer .logo img {
-  width: 180px;
+  width: 230px;
 }
 
 .box__footer .terms {
@@ -711,7 +746,7 @@ footer {
 .box__copyright hr {
   margin-top: 10px;
   border: none;
-  height: 1px;
+  height: 0.5px;
   background-color: #ffffff;
 }
 

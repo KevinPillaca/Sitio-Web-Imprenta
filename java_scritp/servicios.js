@@ -110,3 +110,30 @@ gsap.from(".servicios-banner h1",{
   duration:1,
   stagger:0.25
 })
+
+// Obtener modal y elementos
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("img-modal");
+const captionText = document.getElementById("caption");
+const cerrar = document.getElementsByClassName("cerrar")[0];
+
+// Abrir modal al hacer click en cualquier imagen con clase "imagen-click"
+document.querySelectorAll(".imagen-click").forEach(img => {
+  img.addEventListener("click", () => {
+    modal.classList.add("activo");   // activa el modal
+    modalImg.src = img.src;
+    captionText.innerHTML = img.alt; // muestra el texto descriptivo
+  });
+});
+
+// Cerrar modal al hacer click en la X
+cerrar.onclick = () => {
+  modal.classList.remove("activo");
+};
+
+// También cerrar si el usuario hace click fuera de la imagen
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("activo");
+  }
+});
