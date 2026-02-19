@@ -595,7 +595,7 @@ body {
     }
 }
 
-/* esto es el style de la parte de bienvenidos  */
+/* esto es el style de la parte de Te Presentamos*/
 .seccion-diseno {
     display: flex;
     align-items: center;
@@ -758,7 +758,7 @@ body {
     }
 
     .imagen img {
-        max-width: 350px;
+        max-width: 300px;
     }
     .imagen {
         margin-bottom: 20px;
@@ -781,10 +781,13 @@ body {
 .banner {
   position: relative;
   width: 100%;
-  height: 600px;
+  min-height: 600px;
   overflow: hidden;
-}
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .banner img.fondo {
   width: 100%;
   height: 100%;
@@ -810,9 +813,8 @@ body {
   z-index: 3;
   text-align: center;
   color: white;
-  top: 50%;
-  transform: translateY(-50%);
   padding: 20px;
+  max-width: 90%;
 }
 
 .subtitulo h2{
@@ -827,7 +829,7 @@ body {
   line-height: 1.3;
   margin-bottom: 30px;
   text-transform: uppercase;
-  margin-top: 60px;
+  margin-top: 20px;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -845,7 +847,7 @@ body {
   -webkit-transition: ease-out 0.4s;
   -moz-transition: ease-out 0.4s;
   transition: ease-out 0.4s;
-  margin-top: 40px;
+  margin-top: 5px;
 }
 
 .slide_left:hover {
@@ -855,49 +857,61 @@ body {
 /* --- Estilos Responsive --- */
 @media (max-width: 1024px) {
   .banner {
-    height: 500px;
+    min-height: 500px;
   }
-  .titulo {
+
+  .titulo h1 {
     font-size: 32px;
-    margin-top: 40px;
+    margin-top: 15px;
   }
-  .subtitulo {
+
+  .subtitulo h2 {
     font-size: 20px;
   }
 }
 
 @media (max-width: 768px) {
   .banner {
-    height: 450px;
+    min-height: 450px;
   }
-  .titulo {
-    font-size: 26px;
+
+  .titulo h1 {
+    font-size: 23px;
+    line-height: 1.2;
   }
-  .subtitulo {
+
+  .subtitulo h2 {
     font-size: 18px;
   }
+
   .button_slide {
     padding: 14px 28px;
     font-size: 14px;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .banner {
-    height: 400px;
+    min-height: 420px;
   }
-  .titulo {
-    font-size: 20px;
-    margin-top: 20px;
+
+  .titulo h1 {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-top: 10px;
   }
-  .subtitulo {
+
+  .subtitulo h2 {
     font-size: 16px;
   }
+
   .button_slide {
     padding: 12px 24px;
     font-size: 13px;
+    margin-top: 0;
   }
-} 
+}
 
 
 /* seccion impresion digital, offset y diseño */
@@ -1190,9 +1204,12 @@ body {
   }
 
   .info_servicios h1,
-  .info_servicios p,
   .info_servicios ul {
     text-align: center;
+  }
+  .info_servicios p {
+    text-align: center;
+    padding: 0 10px;
   }
 
    .info_servicios ul {
@@ -1451,15 +1468,15 @@ body {
 .mensaje-form {
   display: none;            /* Oculto por defecto */
   text-align: center;
-  font-weight: 700;
-  margin-top: 10px;
+  font-weight: 600;
+  margin-top: 5px;
 }
 
 .mensaje-exito {
   color: #00aaff;
   text-align: center;
   font-family:Arial, sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   opacity: 0.6;
 }
 
@@ -1529,6 +1546,7 @@ body {
     width: 100%;
     text-align: center;
     padding: 12px;
+    margin-top: 10px;
   }
   
 }
@@ -1571,7 +1589,7 @@ footer {
 }
 
 .box__footer h2 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #ffffff;
   font-weight: 700;
 }
@@ -1609,8 +1627,11 @@ footer {
 }
 
 .box__copyright p {
-  margin-top: 20px;
+  font-size: 14px;
+  margin-top: 15px;
   color: #ffffff;
+  word-spacing: 3px;
+  letter-spacing: 0.5px;
 }
 
 .box__copyright hr {

@@ -592,14 +592,15 @@
 .mensaje-form {
   display: none;            /* Oculto por defecto */
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
+  margin-top: 5px;
 }
 
 .mensaje-exito {
   color: #00aaff;
   text-align: center;
   font-family:Arial, sans-serif;
-  font-size: 15px;
+  font-size: 13px;
   opacity: 0.6;
 }
 
@@ -656,7 +657,7 @@ footer {
 }
 
 .box__footer h2 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #ffffff;
   font-weight: 700;
 }
@@ -693,8 +694,11 @@ footer {
 }
 
 .box__copyright p {
-  margin-top: 20px;
+  font-size: 14px;
+  margin-top: 15px;
   color: #ffffff;
+  word-spacing: 3px;
+  letter-spacing: 0.5px;
 }
 
 .box__copyright hr {

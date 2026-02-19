@@ -6,6 +6,10 @@
   list-style: none;
   cursor: none;
 }
+html, body {
+    overflow-x: hidden; /* Garantía extra contra el scroll horizontal */
+    width: 100%;
+}
 
 /* este es el estilo del Efecto del cursor*/
 .cursor-dot {
@@ -535,24 +539,35 @@ word-spacing: 1px;
 
 
 @media (max-width: 768px) {
-  .blog_corel .blog_2 {
-    
-    width:100%;
-    height: auto;
-    
-      display: flex;
-      flex-direction: column;
-}
+    .blog_corel .blogImagen {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
 
-.blog_corel .blog_2 .uno_blog2 {
-    width: 100%;
-}
-.blog_corel .blog_2 h2 {
-    margin-top: 0;
-    font-size: 25px;
-    margin-bottom: 15px;
-    text-align: center;
-}
+    .blogImagen img {
+        min-width: 0 !important;
+        width: 100%;
+        max-width: 550px;
+        margin-bottom: 20px;
+    }
+    .blog_corel .blog_2 {
+        display: flex;
+        flex-direction: column; 
+        gap: 30px;
+        width: 100%;
+    }
+
+    .blog_corel .blog_2 .uno_blog2, 
+    .blog_corel .blog_2 .dos_blog2 {
+        width: 100% !important; 
+        text-align: left;       
+    }
+
+    .blog_corel .blog_2 h2 {
+        text-align: center;     
+        width: 100%;
+    }
 }
 
 /* Esta es la parte del style del blog del Photoshop */
@@ -632,7 +647,7 @@ margin-top: 15px;
   .blog_photoshop .blog_2 {
 width: auto;
 height: auto;
-margin-top: 15px;
+margin-top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -642,6 +657,9 @@ margin-top: 15px;
     margin-top: 15px  ;
     font-size: 25px;
     margin-bottom: 15px;
+    text-align: center;
+}
+.blog_photoshop h1 {
     text-align: center;
 }
 }
@@ -849,11 +867,12 @@ margin-bottom: 10px;
     height: auto;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
     }
   .blog_digital img {
     min-width: 350px;
     height: 100%;
-    
+    margin: 0 auto;
 }
 .blog_digital h1 {
 margin-top: 20px  ;
@@ -908,6 +927,7 @@ margin-bottom: 10px;
     height: auto;
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
     }
   .blog_offset img {
     min-width: 350px;
@@ -956,7 +976,7 @@ footer {
 }
 
 .box__footer h2 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   color: #ffffff;
   font-weight: 700;
 }
@@ -994,8 +1014,11 @@ footer {
 }
 
 .box__copyright p {
-  margin-top: 20px;
+  font-size: 14px;
+  margin-top: 15px;
   color: #ffffff;
+  word-spacing: 3px;
+  letter-spacing: 0.5px;
 }
 
 .box__copyright hr {
